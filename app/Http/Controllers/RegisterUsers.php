@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
-use Auth;;
+use Auth;
 class RegisterUsers extends Controller
 {
     public function registers(){
