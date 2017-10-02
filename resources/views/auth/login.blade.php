@@ -7,18 +7,37 @@
                 <div class="account-col text-center">
                     <h1>ABSOLUTE-Admin</h1>
                     <h3>Log into your account</h3>
-                    <form class="m-t"  action="index.html">
-                        <div class="form-group row">
-                            <input type="text" class="form-control" placeholder="Username" required="">
+                      <form class="form-horizontal" method="POST" action="{{ route('login') }}">
+                        {{ csrf_field() }}
+                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }} row">
+                            <input type="email" class="form-control" placeholder="Email Adress" name="email" id="email" required="">
+                             @if ($errors->has('email'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('email') }}</strong>
+                                    </span>
+                                @endif
                         </div>
-                        <div class="form-group row">
-                            <input type="password" class="form-control" placeholder="Passowrd" required="">
+                        <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }} row">
+                            <input type="password" class="form-control" placeholder="Password" id="password" name="password" required="">
+                               @if ($errors->has('password'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('password') }}</strong>
+                                    </span>
+                                @endif
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-6 col-md-offset-4">
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> Remember Me
+                                    </label>
+                                </div>
+                            </div>
                         </div>
                         <button type="submit" class="btn btn-primary btn-block ">Login</button>
-                        <a href="#"><small>Forgot password?</small></a>
-                        <p class=" text-center"><small>Do not have an account?</small></p>
-                        <a class="btn  btn-secondary btn-block" href="register.html">Create an account</a>
-                        <p>Absolute-Admin Admin &copy; 2016</p>
+                        <a href="{{ route('password.request') }}"><small>Forgot password?</small></a>
+                      
+                        
                     </form>
                 </div>
             </div>
