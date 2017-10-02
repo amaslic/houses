@@ -9,9 +9,19 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{{ config('app.name', 'Laravel') }}</title>
-
+   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400%7CRaleway:300,400,500,600,700%7CLato:300,400,400italic,600,700" rel="stylesheet" type="text/css" />
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{asset('plugins/metis-menu/metisMenu.min.css')}}" rel="stylesheet">
+    <link href="{{asset('plugins/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet">
+    <link href="{{asset('plugins/simple-line-icons-master/css/simple-line-icons.css')}}" rel="stylesheet">
+    <link href="{{asset('plugins/animate/animate.css')}}" rel="stylesheet">
+    <link href="{{asset('plugins/c3/c3.min.css')}}" rel="stylesheet">
+    <link href="{{asset('plugins/widget/widget.css')}}" rel="stylesheet">
+    <link href="{{asset('plugins/calendar/fullcalendar.min.css')}}" rel="stylesheet">
+    <link href="{{asset('plugins/ui/jquery-ui.css')}}" rel="stylesheet">
+     <link href="{{asset('css/style.css')}}" rel="stylesheet">
+      <link href="{{asset('css/theme/dark.css')}}" rel="stylesheet">
 </head>
 <body>
     <div id="app">
