@@ -15,6 +15,10 @@ dark price
 Responsive
 bootstrap wizard form css****/
 
+/* html{
+    position: relative;
+    min-height: 100%;
+} */
 body {
     font-family: 'Open Sans', sans-serif;
     font-size: 13px;
@@ -414,7 +418,7 @@ div.dataTables_filter label {
     font-weight: normal;
     float: right;
 }
-.footer {
+/* footer {
     background: none repeat scroll 0 0 white;
     border-top: 1px solid #e7eaec;
     bottom: 0;
@@ -422,8 +426,23 @@ div.dataTables_filter label {
     padding: 10px 20px;
     position: absolute;
     right: 0;
-
-}
+} */
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background: #f6a821;
+    color: white;
+    text-align: center;
+ }
+ p{
+     margin-top: 10px!important;
+ }
+ .footer p.copyright{
+    font-size: 14px;
+    font-weight: 600;
+ }
 .content-wrapper.container{padding-bottom:45px;}
 .well, .white-bg{background:#fff;}
 .sidebar-toggler
