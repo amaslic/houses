@@ -23,7 +23,7 @@
                                  @if (Auth::user()->isAdmin())
                                 <a href="registers" class="dropdown-toggle"  data-close-others="true">
                                 @endif
-                                    <i class="icon-bell"></i>
+                                    <i class="fa fa-user"></i>
                                     <span class="badge badge-default"> <span class="ring">
                                         </span><span class="ring-point">
                                         </span> </span>
