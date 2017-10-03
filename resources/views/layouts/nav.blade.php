@@ -81,7 +81,7 @@
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="viewmap">
+                                                <a href="viewusermap">
                                                    
                                                     <span class="details">
                                                         <span class="label label-sm label-icon label-info">
@@ -95,7 +95,14 @@
                                 </ul>
                             </li>
                                  @endif
-                               
+                                @if (Auth::user()->isAdmin())
+                                <li class="dropdown dropdown-extended dropdown-notification" id="header_notification_bar">
+                                <a href="pins" class="dropdown-toggle"  data-close-others="true">
+                                    <i class="fa fa-map-marker"></i>
+                                    
+                                </a>
+                                </li>
+                                @endif
                                 {{--  <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
                                     <i class="icon-bell"></i>
                                     <span class="badge badge-default"> <span class="ring">
