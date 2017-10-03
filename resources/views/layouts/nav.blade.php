@@ -24,9 +24,14 @@
                                 <a href="registers" class="dropdown-toggle"  data-close-others="true">
                                 @endif
                                     <i class="fa fa-user"></i>
-                                    <span class="badge badge-default"> <span class="ring">
-                                        </span><span class="ring-point">
-                                        </span> </span>
+                                   
+                                        
+                                </a>
+                                 
+                                <a href="maps" class="dropdown-toggle"  data-close-others="true">
+                              
+                                    <i class="fa fa-map"></i>
+                                   
                                 </a>
                                 {{--  <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
                                     <i class="icon-bell"></i>
