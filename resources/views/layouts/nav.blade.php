@@ -19,20 +19,41 @@
                     <div class="top-menu">
                         <ul class="nav navbar-nav float-right">
                             <!-- BEGIN NOTIFICATION DROPDOWN -->
-                            <li class="dropdown dropdown-extended dropdown-notification" id="header_notification_bar">
+                           
                                  @if (Auth::user()->isAdmin())
-                                <a href="registers" class="dropdown-toggle"  data-close-others="true">
-                                @endif
+                                <li class="dropdown dropdown-extended dropdown-notification" id="header_notification_bar">
+                                <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
                                     <i class="fa fa-user"></i>
-                                   
-                                        
+                                    
                                 </a>
-                                 
-                                <a href="maps" class="dropdown-toggle"  data-close-others="true">
-                              
-                                    <i class="fa fa-map"></i>
+                                <ul class="dropdown-menu animated flipInX">
                                    
-                                </a>
+                                    <li>  <ul class="dropdown-menu-list scroller" data-handle-color="#637283">
+                                            <li>
+                                                <a href="registers">
+                                                   
+                                                    <span class="details">
+                                                        <span class="label label-sm label-icon label-success">
+                                                            <i class="fa fa-plus"></i>
+                                                        </span>Add New User</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="javascript:;">
+                                                   
+                                                    <span class="details">
+                                                        <span class="label label-sm label-icon label-success">
+                                                            <i class="fa fa-list"></i>
+                                                        </span>User List</span>
+                                                </a>
+                                            </li>
+                                            
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                                 @endif
+                               
                                 {{--  <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
                                     <i class="icon-bell"></i>
                                     <span class="badge badge-default"> <span class="ring">
