@@ -56,7 +56,7 @@
                                  @if (Auth::user()->isAdmin())
                                 <li class="dropdown dropdown-extended dropdown-notification" id="header_notification_bar">
                                 <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
-                                    <i class="fa fa-map"></i>
+                                    <i class="fa fa-map-o"></i>
                                     
                                 </a>
                                 <ul class="dropdown-menu animated flipInX">
