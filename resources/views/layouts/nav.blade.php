@@ -1,18 +1,16 @@
- <div id="wrapper">
+<div id="wrapper">
             <!-- BEGIN HEADER -->
             <div class="page-header navbar fixed-top">
                 <!-- BEGIN HEADER INNER -->
                 <div class="page-header-inner ">
                     <!-- BEGIN LOGO -->
                     <div class="page-logo">
-                        <a href="home">
-                            <img src="images/logo.png" alt="absolute admin" class="img-fluid logo-default"/> </a>
-
-                    </div><div class="menu-toggler sidebar-toggler">
-                        <a href="javascript:;" class="navbar-minimalize minimalize-styl-2  float-left "><i class="fa fa-bars"></i></a>
+                        <a href="home"><img src="images/logo.png" alt="absolute admin" class="img-fluid logo-default"/> </a>
                     </div>
 
-                    
+                    <div class="menu-toggler sidebar-toggler">
+                        <a href="javascript:;" class="navbar-minimalize minimalize-styl-2  float-left "><i class="fa fa-bars"></i></a>
+                    </div>
                     <!-- END LOGO -->
 
                     <!-- BEGIN TOP NAVIGATION MENU -->
@@ -22,45 +20,39 @@
                            
                                  @if (Auth::user()->isAdmin())
                                 <li class="dropdown dropdown-extended dropdown-notification" id="header_notification_bar">
-                                <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
-                                    <i class="fa fa-user"></i>
-                                    
-                                </a>
-                                <ul class="dropdown-menu animated flipInX">
-                                   
-                                    <li>  <ul class="dropdown-menu-list scroller" data-handle-color="#637283">
-                                            <li>
-                                                <a href="registers">
-                                                   
-                                                    <span class="details">
-                                                        <span class="label label-sm label-icon label-success">
-                                                            <i class="fa fa-plus"></i>
-                                                        </span>Add New User</span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="userlist">
-                                                   
-                                                    <span class="details">
-                                                        <span class="label label-sm label-icon label-info">
-                                                            <i class="fa fa-list"></i>
-                                                        </span>User List</span>
-                                                </a>
-                                            </li>
-                                            
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </li>
+                                    <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+                                        <i class="fa fa-user"></i>
+                                    </a>
+                                    <ul class="dropdown-menu animated flipInX">
+                                        <li>  
+                                            <ul class="dropdown-menu-list scroller" data-handle-color="#637283">
+                                                <li>
+                                                    <a href="registers"><span class="details">
+                                                                <span class="label label-sm label-icon label-success">
+                                                                    <i class="fa fa-plus"></i></span>Add New User</span>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="userlist">
+                                                        
+                                                            <span class="details">
+                                                                <span class="label label-sm label-icon label-info">
+                                                                    <i class="fa fa-list"></i>
+                                                                </span>User List</span>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </li>
                                  @endif
                                  @if (Auth::user()->isAdmin())
                                 <li class="dropdown dropdown-extended dropdown-notification" id="header_notification_bar">
-                                <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
-                                    <i class="fa fa-map-o"></i>
-                                    
-                                </a>
+                                    <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+                                        <i class="fa fa-map-o"></i>
+                                        
+                                    </a>
                                 <ul class="dropdown-menu animated flipInX">
-                                   
                                     <li>  <ul class="dropdown-menu-list scroller" data-handle-color="#637283">
                                             <li>
                                                 <a href="addteritory">
@@ -103,7 +95,8 @@
                                 </a>
                                 </li>
                                 @endif
-                                {{--  <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+                               
+							   {{--  <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
                                     <i class="icon-bell"></i>
                                     <span class="badge badge-default"> <span class="ring">
                                         </span><span class="ring-point">
@@ -400,6 +393,9 @@
                             <!-- END USER LOGIN DROPDOWN -->
                             <!-- BEGIN QUICK SIDEBAR TOGGLER -->
                             <!-- DOC: Apply "dropdown-dark" class after below "dropdown-extended" to change the dropdown styte -->
+                            
+							   
+							   
                             <li class="dropdown dropdown-quick-sidebar-toggler">
                                 <a href="logout" class="dropdown-toggle">
                                     <i class="icon-logout"></i>
@@ -412,6 +408,7 @@
                 </div>
                 <!-- END HEADER INNER -->
           
-          
+            </div>
             <!-- END HEADER -->
+</div>
            

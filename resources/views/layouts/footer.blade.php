@@ -1,16 +1,15 @@
-
-<section class="footer">
-<div class="container">
-  <div class="row">
-   <div class="col-md-12">
-      <p class="copyright"> Copyright © Mantos 2017. All right reserved. </p>
+  <footer class="footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <p class="copyright"> Copyright © Mantos 2017. All right reserved. </p>
+        </div>
+      </div>
     </div>
-    </div>
-    </div>
-</section>
+  </footer>
 
   <script type="text/javascript" src="plugins/jquery/jquery.min.js"></script>
-        <script type="text/javascript" src="plugins/bootstrap/js/tether.min.js"></script>
-        <script type="text/javascript" src="plugins/bootstrap/js/bootstrap.min.js"></script>
-        </body>
-        </html>
+  <script type="text/javascript" src="plugins/bootstrap/js/tether.min.js"></script>
+  <script type="text/javascript" src="plugins/bootstrap/js/bootstrap.min.js"></script>
+</body>
+</html>
