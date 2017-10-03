@@ -21,3 +21,4 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('registers', 'RegisterUsers@registers');
 Route::post('registeruser', 'RegisterUsers@register');
 Route::get('logout', 'HomeController@logout');
+Route::get('userlist', 'HomeController@userlist');

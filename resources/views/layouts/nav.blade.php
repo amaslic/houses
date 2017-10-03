@@ -39,12 +39,54 @@
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="javascript:;">
+                                                <a href="userlist">
+                                                   
+                                                    <span class="details">
+                                                        <span class="label label-sm label-icon label-info">
+                                                            <i class="fa fa-list"></i>
+                                                        </span>User List</span>
+                                                </a>
+                                            </li>
+                                            
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                                 @endif
+                                 @if (Auth::user()->isAdmin())
+                                <li class="dropdown dropdown-extended dropdown-notification" id="header_notification_bar">
+                                <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+                                    <i class="fa fa-map"></i>
+                                    
+                                </a>
+                                <ul class="dropdown-menu animated flipInX">
+                                   
+                                    <li>  <ul class="dropdown-menu-list scroller" data-handle-color="#637283">
+                                            <li>
+                                                <a href="addnewmap">
                                                    
                                                     <span class="details">
                                                         <span class="label label-sm label-icon label-success">
-                                                            <i class="fa fa-list"></i>
-                                                        </span>User List</span>
+                                                            <i class="fa fa-plus"></i>
+                                                        </span>Add New Map</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="viewmap">
+                                                   
+                                                    <span class="details">
+                                                        <span class="label label-sm label-icon label-info">
+                                                            <i class="fa fa-map"></i>
+                                                        </span>View Map</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="viewmap">
+                                                   
+                                                    <span class="details">
+                                                        <span class="label label-sm label-icon label-info">
+                                                            <i class="fa fa-map"></i>
+                                                        </span>View Map By User</span>
                                                 </a>
                                             </li>
                                             
