@@ -42,8 +42,44 @@ class HomeController extends Controller
        return view('auth.login');
        
     }
-    public function userlist(){
 
+    public function userlist(){
+    if(Auth::user()->isAdmin()){
         return view ('userlist');
+    }else {
+        return back();
+    }
+    }
+
+    public function pins(){
+    if(Auth::user()->isAdmin()){
+        return view ('pins');
+    }else {
+        return back();
+    }
+    }
+
+    public function addteritory(){
+    if(Auth::user()->isAdmin()){
+        return view ('addteritory');
+    }else {
+        return back();
+    }
+    }
+
+    public function viewmap(){
+    if(Auth::user()->isAdmin()){
+        return view ('viewmap');
+    }else {
+        return back();
+    }
+    }
+
+    public function viewusermap(){
+    if(Auth::user()->isAdmin()){
+        return view ('viewusermap');
+    }else {
+        return back();
+    }
     }
 }

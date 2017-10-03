@@ -22,3 +22,7 @@ Route::get('registers', 'RegisterUsers@registers');
 Route::post('registeruser', 'RegisterUsers@register');
 Route::get('logout', 'HomeController@logout');
 Route::get('userlist', 'HomeController@userlist');
+Route::get('pins', 'HomeController@pins');
+Route::get('addteritory', 'HomeController@addteritory');
+Route::get('viewmap', 'HomeController@viewmap');
+Route::get('viewusermap', 'HomeController@viewusermap');

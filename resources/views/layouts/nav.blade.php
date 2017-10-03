@@ -63,12 +63,12 @@
                                    
                                     <li>  <ul class="dropdown-menu-list scroller" data-handle-color="#637283">
                                             <li>
-                                                <a href="addnewmap">
+                                                <a href="addteritory">
                                                    
                                                     <span class="details">
                                                         <span class="label label-sm label-icon label-success">
                                                             <i class="fa fa-plus"></i>
-                                                        </span>Add New Map</span>
+                                                        </span>Add Teritory</span>
                                                 </a>
                                             </li>
                                             <li>
