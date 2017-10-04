@@ -28,6 +28,19 @@ body {
     overflow-x: hidden;
     font-weight: 400;
 }
+
+
+
+.territoryMap {
+    height: 100%;
+    z-index: 9999;
+    top: 50px;
+    max-width: 680px;
+    max-height: 520px;
+    width: 100%;
+}
+
+
 .m-b {
     margin-bottom: 15px;
 }
@@ -1629,3 +1642,5 @@ div.fancy-select ul.options li.hover, .select2-drop {
 .list-group-item{background-color:#000;}
 .btn-secondary, .btn-secondary:hover, .btn-secondary:focus{    background-color: #dae6ec;
     border-color: #dae6ec;}
+
+  

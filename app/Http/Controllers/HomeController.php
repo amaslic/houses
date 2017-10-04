@@ -61,13 +61,13 @@ class HomeController extends Controller
     }
     }
 
-    public function addteritory(){
+    /*public function addteritory(){
     if(Auth::user()->isAdmin()){
         return view ('addteritory');
     }else {
         return back();
     }
-    }
+    }*/
 
     public function viewmap(){
     if(Auth::user()->isAdmin()){
