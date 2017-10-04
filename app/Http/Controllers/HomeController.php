@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Auth;
+use App\User;
 class HomeController extends Controller
 {
     /**
@@ -45,7 +46,8 @@ class HomeController extends Controller
 
     public function userlist(){
     if(Auth::user()->isAdmin()){
-        return view ('userlist');
+        $users = User::get();
+        return view ('userlist', compact('users'));
     }else {
         return back();
     }
