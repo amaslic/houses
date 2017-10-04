@@ -5,7 +5,7 @@
    <div class="panel panel-card recent-activites">
       <!-- Start .panel -->
       <div class="card-header">
-         Order Status
+         Users List
       </div>
       <div class="card-block text-xs-center">
          <div class="table-responsive table-commerce">
