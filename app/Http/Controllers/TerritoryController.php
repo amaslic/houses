@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Auth;
 use App\User;
 
-class AddTerritory extends Controller
+class TerritoryController extends Controller
 {
     /**
      * Display a listing of the resource.

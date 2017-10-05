@@ -18,7 +18,7 @@
         <button style="position: relative;
     z-index: 9999;
     top: 150px;">
-            Add terrytory
+            Add territory
          </button>
 <script>
       function initMap() {
@@ -33,6 +33,7 @@
           drawingControlOptions: {
             position: google.maps.ControlPosition.TOP_CENTER,
             drawingModes: ['polyline']
+            
           },
           markerOptions: {icon: 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png'},
           circleOptions: {
@@ -58,6 +59,7 @@
             max-width: 680px;
             max-height: 520px;
             width: 100%;
+            position: absolute;
         }
     </style>
          
