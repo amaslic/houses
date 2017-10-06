@@ -32,6 +32,22 @@ body {
     overflow-x: hidden;
     font-weight: 400;
 }
+.pp{
+    padding: 7px 7px 7px 7px;
+}
+.card-header .btn-clickable
+{
+display: inline-block;
+margin-top: -25px;
+font-size: 15px;
+margin-right: -10px;
+padding: 4px 10px;
+border-radius: 4px
+}
+
+
+
+
 .m-b {
     margin-bottom: 15px;
 }
