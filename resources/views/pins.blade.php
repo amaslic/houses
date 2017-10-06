@@ -3,9 +3,10 @@
 
 <div class="container" style="margin-top:100px;">
     <div class="row">
+        <div class="col-md-8">
         <div class="panel panel-card margin-b-30">
             <div class="col-sm-12">
-                <div class="card-header">
+                <div class="card-header card_header">
                     
                     <p><i class="fa fa-folder-open-o" aria-hidden="true"></i> Add Status</p>
                     <a class="btn btn-success btn-clickable pull-right" href="#">
@@ -13,7 +14,7 @@
                     </a>
                 </div>
             </div>
-            <div class="panel-body">
+            <div class="panel_body">
                 <form class="form-inline" method="POST" action="/addpin">
                     {{ csrf_field() }}
                     <div class="pp form-group{{ $errors->has('name') ? ' has-error' : '' }}">
@@ -42,6 +43,7 @@
                     </div>
                 </form>
             </div>
+        </div>
         </div>
     </div>
 </div>
