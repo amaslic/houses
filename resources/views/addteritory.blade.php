@@ -9,6 +9,13 @@
     <div id="map-canvas" style="width: 620px;
     height: 480px; padding-top: 150px;" ></div>
 
+     <select>
+        @foreach($users as $user)
+            <option name="{{$user->id}}">
+                {{$user->name}} ({{$user->email}})
+            </option>
+        @endforeach
+    </select>
 </div>
 
 
@@ -21,11 +28,12 @@
     $(document).ready(function(){
         var poly;
         var map;
-       var image = {
+        var image = {
             url: "https://maps.gstatic.com/mapfiles/ms2/micons/red.png",
             size: new google.maps.Size(1, 1),
-  
         };
+        var lineCoords = [];
+       
         
 
         initialize = function () {
@@ -61,7 +69,9 @@
             });
             var markerLat = (event.latLng.lat()).toFixed(6);
             var markerLng = (event.latLng.lng()).toFixed(6);
-          
+            lineCoords.push(markerLat, markerLng);
+
+            console.log(lineCoords);
 
             console.log("Lat: " + markerLat + " Lng: " + markerLng)
                
