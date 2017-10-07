@@ -9,7 +9,7 @@
                 <div class="card-header card_header">
                     
                     <p><i class="fa fa-folder-open-o" aria-hidden="true"></i> Add Status</p>
-                    <a class="btn btn-success btn-clickable pull-right" href="#">
+                    <a class="btn btn-success btn-clickable right" href="#">
                         <i class="fa fa-chevron-down"></i> 
                     </a>
                 </div>
@@ -36,7 +36,7 @@
                         @endif
                     </div>
                     <div class="pp form-group">
-                        <button type="cancel" class="btn btn-primary"> Cancel </button>
+                        <button type="reset" class="btn btn-primary"> Cancel </button>
                     </div>
                     <div class="pp form-group">
                         <button type="submit" class="btn btn-primary"> Submit </button>

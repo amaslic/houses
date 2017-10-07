@@ -32,22 +32,6 @@ body {
     overflow-x: hidden;
     font-weight: 400;
 }
-.pp{
-    padding: 7px 7px 7px 7px;
-}
-.card_header .btn-clickable
-{
-display: inline-block;
-margin-top: -25px;
-font-size: 15px;
-margin-right: -10px;
-padding: 4px 10px;
-border-radius: 4px
-}
-
-
-
-
 .m-b {
     margin-bottom: 15px;
 }
@@ -1668,3 +1652,38 @@ div.fancy-select ul.options li.hover, .select2-drop {
     .registerform{
         margin-top:50px;
     }
+.pp{
+    padding: 7px 7px 7px 7px;
+}
+.card_header a{
+    color: #fff;
+}
+.card_header .btn-clickable
+{
+    display: inline-block;
+    margin-top: -38px;
+    font-size: 15px;
+    margin-right: -10px;
+    padding: 4px 10px;
+    border-radius: 4px
+}
+.card_header .btn-success{
+    background: #3d404c;
+    border-color: #949ba2;
+}
+.card_header .btn:active{
+    background: #3d404c;
+    border-color: #949ba2;
+}
+.card_header .btn:hover{
+    background: #3d404c;
+    border-color: #949ba2;
+}
+.card_header .btn:visited{
+    background: #3d404c;
+    border-color: #949ba2;
+}
+.card_header .btn:focus{
+    -webkit-box-shadow: none!important;
+    box-shadow: none!important;
+}
