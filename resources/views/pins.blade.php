@@ -1,7 +1,7 @@
 @include('layouts.header')
 @include('layouts.nav')
 
-<div class="container" style="margin-top:100px;">
+<div class="container container-main">
     <div class="row">
         <div class="col-md-8">
         <div class="panel panel-card margin-b-30">

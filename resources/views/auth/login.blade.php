@@ -2,7 +2,7 @@
 
 
 <body class="account">
-        <div class="container">
+        <div class="container   container-main">
             <div class="row">
                 <div class="account-col text-center">
                     <h1>ABSOLUTE-Admin</h1>

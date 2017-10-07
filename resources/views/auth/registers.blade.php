@@ -2,7 +2,7 @@
 
 @include('layouts.nav')
 
-    <div class="row registerform">
+    <div class="row registerform container-main">
         <div class="offset-md-3 col-md-6  ">
             <div class="panel panel-card margin-b-30">
                 <div class="card-header">Register</div>
