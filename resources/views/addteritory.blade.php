@@ -29,13 +29,14 @@
 <script type="text/javascript">
 
     $(document).ready(function(){
-
+        var lineCoords = [];
       
 
         initMap = function () {
         var map = new google.maps.Map(document.getElementById('map'), {
           center: {lat: -34.397, lng: 150.644},
-          zoom: 8
+          zoom: 8,
+          mapTypeId: 'terrain'
         });
 
         function rgb2hex(rgb) {
@@ -45,7 +46,8 @@
             }
             return "#" + hex(rgb[1]) + hex(rgb[2]) + hex(rgb[3]);
         }
-
+        var color = rgb2hex($(".color-picker").css("backgroundColor"));
+        alert(color);
         var drawingManager = new google.maps.drawing.DrawingManager({
           drawingMode: google.maps.drawing.OverlayType.MARKER,
           drawingControl: true,
@@ -55,16 +57,29 @@
           },
           markerOptions: {icon: 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png'},
           circleOptions: {
-            fillColor: rgb2hex($(".color-picker").css("backgroundColor")),
-            fillOpacity: 1,
-            strokeWeight: 5,
-            clickable: false,
+            fillColor: color,
+            fillOpacity: 0.8,
+            strokeWeight: 3,
+            strokeColor: color,
+            clickable: true,
             editable: true,
             zIndex: 1
           }
         });
         drawingManager.setMap(map);
-        alert( rgb2hex($(".color-picker").css("backgroundColor")));
+    
+
+        google.maps.event.addListener(drawingManager, 'polygoncomplete', function(polygon) {
+            drawingManager.setDrawingMode(null);
+            var arr = [];
+            polygon.getPath().forEach(function(latLng){arr.push(latLng.toString());})
+      
+
+           // lineCoords.push(arr.join(',\n'));
+            lineCoords.push(JSON.stringify(arr));
+            console.log(lineCoords);
+        });
+
       }
 
 /*       var poly;
