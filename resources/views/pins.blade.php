@@ -10,7 +10,7 @@
                   <tbody>
                      @foreach($pin as $pi)
                      <tr role="row" class="odd">
-                        {{--  <td>{{$pi->id}}</td>  --}}
+                        <td>{{$pi->color}}</td>
                         <td>{{$pi->name}}</td>
                         <td>{{$pi->group}}</td>
                         
@@ -36,6 +36,12 @@
             <div class="panel_body">
                 <form class="form-inline" method="POST" action="/addpin">
                     {{ csrf_field() }}
+
+                    <select name="color">
+                        <option default-value="red">Red</option>
+                        <option value="green">Green</option>
+                        <option value="blue">Blue</option>
+                    </select>
                     <div class="pp form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                         <label for="name" class="sr-only control-label"></label>
                         <input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="name" placeholder="Status Name" name="name" value="{{ old('name') }}" required autofocus >

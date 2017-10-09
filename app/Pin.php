@@ -10,5 +10,6 @@ class Pin extends Model
     protected $fillable = [
         'name',
         'group',
+        'color',
     ];
 }

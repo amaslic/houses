@@ -17,11 +17,13 @@ class PinController extends Controller
      $this->validate(request(), [
         'name' => 'required|string|max:255',
         'group' => 'required|string|max:255',
+        'color' =>  'required|string|max:255',
 
     ]);
     $pin= Pin::create([
         'name' => request('name'),
         'group' => request('group'),
+        'color' => request('color'),
     ]);
 
         return back();
