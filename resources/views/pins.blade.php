@@ -3,6 +3,25 @@
 
 <div class="container container-main">
     <div class="row">
+
+
+       <table>
+                  
+                  <tbody>
+                     @foreach($pin as $pi)
+                     <tr role="row" class="odd">
+                        {{--  <td>{{$pi->id}}</td>  --}}
+                        <td>{{$pi->name}}</td>
+                        <td>{{$pi->group}}</td>
+                        
+                        
+                     </tr>
+                     @endforeach
+                  </tbody>
+        </table>
+
+
+
         <div class="col-md-8">
         <div class="panel panel-card margin-b-30">
             <div class="col-sm-12">

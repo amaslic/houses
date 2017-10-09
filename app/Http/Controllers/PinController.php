@@ -27,4 +27,8 @@ class PinController extends Controller
         return back();
 
    }
+   public function getPin(){
+        $pin = Pin::get();
+        return view ('pins', compact('pin'));
+    }
 }
