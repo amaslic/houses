@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Auth;
 use App\User;
+use App\Marker;
+use App\Pin;
 class HomeController extends Controller
 {
     /**
@@ -29,7 +31,11 @@ class HomeController extends Controller
                return view('dashboard');
            }
                else{
-                return view('home');
+                     $locations = Marker::where('user_id', Auth::id())->get();
+                    $pins = Pin::get();
+                   
+                    return view('home', compact('locations','pins'));
+               
                }
            
         }

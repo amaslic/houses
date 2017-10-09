@@ -1,0 +1,12 @@
+.markers{
+    display: none;
+    background-color: white;
+    position: absolute;
+    margin-top: -445px;
+    margin-left: 40%;
+    height: 300px;    
+}
+.pins{
+    width:100%;
+    padding-top:5px;
+}
