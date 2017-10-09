@@ -1,76 +1,121 @@
 @include('layouts.header')
 @include('layouts.nav')
 
-<div class="container container-main">
-    <div class="row">
-
-
-       <table>
-                  
-                  <tbody>
-                     @foreach($pin as $pi)
-                     <tr role="row" class="odd">
-                        <td>{{$pi->color}}</td>
-                        <td>{{$pi->name}}</td>
-                        <td>{{$pi->group}}</td>
-                        
-                        
-                     </tr>
-                     @endforeach
-                  </tbody>
-        </table>
-
-
-
-        <div class="col-md-8">
-        <div class="panel panel-card margin-b-30">
-            <div class="col-sm-12">
-                <div class="card-header card_header">
-                    
-                    <p><i class="fa fa-folder-open-o" aria-hidden="true"></i> Add Status</p>
-                    <a class="btn btn-success btn-clickable right" href="#">
-                        <i class="fa fa-chevron-down"></i> 
-                    </a>
+    <div class="container">
+        <div class="row registerform">
+            <div class="col-md-12">
+                <div class="panel panel-card recent-activites mm">
+                    <!-- Start .panel -->
+                    <div class="card-header">
+                        Status List
+                    </div>
+                    <div class="card-block text-xs-center">
+                        <div class="table-responsive table-commerce">
+                            <div id="basic-datatables_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4 no-footer">
+                            <div class="row">
+                                <div class="col-md-6 col-xs-12 ">
+                                    <div class="dataTables_length" id="basic-datatables_length"><label></label></div>
+                                </div>
+                                <div class="col-md-6 col-xs-12">
+                                    <div id="basic-datatables_filter" class="dataTables_filter"></div>
+                                </div>
+                            </div><!--row-->
+                            <table id="basic-datatables" class="table table-striped table-hover dataTable no-footer" role="grid" aria-describedby="basic-datatables_info">
+                                    <thead>
+                                        <tr role="row">
+                                            {{--  <th class="w80 sorting_asc" tabindex="0" aria-controls="basic-datatables" rowspan="1" colspan="1" aria-sort="ascending" 
+                                            style="width: 56px;">
+                                            <strong>ID</strong>
+                                            </th>  --}}
+                                            <th class="sorting" tabindex="0" aria-controls="basic-datatables" rowspan="1" colspan="1" aria-label="
+                                            " style="width: 146px;">
+                                            <strong>Status Color</strong>
+                                            </th>
+                                            <th class="sorting" tabindex="0" aria-controls="basic-datatables" rowspan="1" colspan="1" aria-label="
+                                            " style="width: 146px;">
+                                            <strong>Status Name</strong>
+                                            </th>
+                                            <th class="sorting" tabindex="0" aria-controls="basic-datatables" rowspan="1" colspan="1" aria-label="
+                                            " style="width: 173px;">
+                                            <strong>KPI Group</strong>
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                <tbody>
+                                    @foreach($pin as $pi)
+                                    <tr role="row" class="odd">
+                                        {{--  <td class="sorting_1">{{$pi->id}}</td>  --}}
+                                        <td>{{$pi->color}}</td>
+                                        <td>{{$pi->name}}</td>
+                                        <td>{{$pi->group}}</td>
+                                    </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End .panel --> 
                 </div>
             </div>
-            <div class="panel_body">
-                <form class="form-inline" method="POST" action="/addpin">
-                    {{ csrf_field() }}
+        </div><!--row registerform-->
+    </div><!--container-->
 
-                    <select name="color">
-                        <option default-value="red">Red</option>
-                        <option value="green">Green</option>
-                        <option value="blue">Blue</option>
-                    </select>
-                    <div class="pp form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                        <label for="name" class="sr-only control-label"></label>
-                        <input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="name" placeholder="Status Name" name="name" value="{{ old('name') }}" required autofocus >
-                        @if ($errors->has('name'))
-                            <span class="help-block">
-                                <strong>{{ $errors->first('name') }}</strong>
-                            </span>
-                        @endif
+        <!--ADD STATUS FORM-->
+        <div class="container" style="padding:0;">
+            <div class="col-md-12">
+                <div class="panel panel-card margin-b-30">
+                    <div class="col-sm-12">
+                        <div class="card-header card_header">
+                            <p><i class="fa fa-folder-open-o" aria-hidden="true"></i> Add Status</p>
+                            <a class="btn btn-success btn-clickable right" href="#">
+                                <i class="fa fa-chevron-down"></i> 
+                            </a>
+                        </div>
                     </div>
-                    <div class="pp form-group{{ $errors->has('group') ? ' has-error' : '' }}">
-                        <label class="sr-only control-label" for="group"></label>
-                        <input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="group" placeholder="KPI Group" name="group" value="{{ old('group') }}" required autofocus >
-                        @if ($errors->has('group'))
-                            <span class="help-block">
-                                <strong>{{ $errors->first('group') }}</strong>
-                            </span>
-                        @endif
+                    <div class="panel_body">
+                    <div class="row">
+                        <form class="form-inline ml" method="POST" action="/addpin">
+                            {{ csrf_field() }}
+                            
+                            <div class="pp pl pr form-group{{ $errors->has('name') ? ' has-error' : '' }}">
+                                <label for="name" class="sr-only control-label"></label>
+                                <select name="color" class="form-control mb-2 mr-sm-2 mb-sm-0" style="color:#6b737b">
+                                    <option value="red" class="cw">Red</option>
+                                    <option value="green" class="cw">Green</option>
+                                    <option value="blue" class="cw">Blue</option>
+                                </select>
+                            </div>
+                            <div class="pp pr form-group{{ $errors->has('name') ? ' has-error' : '' }}">
+                                <label for="name" class="sr-only control-label"></label>
+                                <input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="name" placeholder="Status Name" name="name" value="{{ old('name') }}" required autofocus >
+                                @if ($errors->has('name'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('name') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                            <div class="pp pr form-group{{ $errors->has('group') ? ' has-error' : '' }}">
+                                <label class="sr-only control-label" for="group"></label>
+                                <input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="group" placeholder="KPI Group" name="group" value="{{ old('group') }}" required autofocus >
+                                @if ($errors->has('group'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('group') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                            <div class="pp  form-group">
+                                <button type="reset" class="btn btn-primary"> Cancel </button>
+                            </div>
+                            <div class="pp  form-group">
+                                <button type="submit" class="btn btn-primary"> Submit </button>
+                            </div>
+                        </form>
                     </div>
-                    <div class="pp form-group">
-                        <button type="reset" class="btn btn-primary"> Cancel </button>
-                    </div>
-                    <div class="pp form-group">
-                        <button type="submit" class="btn btn-primary"> Submit </button>
-                    </div>
-                </form>
-            </div>
-        </div>
-        </div>
-    </div>
-</div>
+                    </div><!--panel_body-->
+                </div><!--panel panel-card margin-b-30-->
+            </div><!--col-md-12-->
+        </div><!--container-->
+    
 
 @include('layouts.footer')
