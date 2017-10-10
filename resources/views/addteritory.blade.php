@@ -10,16 +10,20 @@
     height: 480px; padding-top: 150px;" ></div>-->
     <div id="map" style="width: 620px;
     height: 480px; padding-top: 150px;" ></div>
-     <select>
-        @foreach($users as $user)
-            <option name="{{$user->id}}">
-                {{$user->name}} ({{$user->email}})
-            </option>
-        @endforeach
-    </select>
-    <div>
-        Color: <input class="jscolor color-picker" value="ab2567">
-    </div>
+    <form method="POST" id="addTerritory" action="createTerritory">
+     {{ csrf_field() }}
+        <select>
+            @foreach($users as $user)
+                <option name="{{$user->id}}">
+                    {{$user->name}} ({{$user->email}})
+                </option>
+            @endforeach
+        </select>
+        <div>
+            Color: <input onchange="changeColor(this.value)" class="jscolor color-picker" value="ab2567" name="color"> <button class="test-btn">Test color</button>
+        </div>
+        <input type="hidden" name="ltdlng" id="ltdlng" />
+    </form>
 </div>
 
 
@@ -36,8 +40,10 @@
         var map = new google.maps.Map(document.getElementById('map'), {
           center: {lat: -34.397, lng: 150.644},
           zoom: 8,
-          mapTypeId: 'terrain'
+     
         });
+
+       var color = rgb2hex($(".color-picker").css("backgroundColor"));
 
         function rgb2hex(rgb) {
             rgb = rgb.match(/^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/);
@@ -46,8 +52,23 @@
             }
             return "#" + hex(rgb[1]) + hex(rgb[2]) + hex(rgb[3]);
         }
-        var color = rgb2hex($(".color-picker").css("backgroundColor"));
-        alert(color);
+
+        
+
+         changeColor = function(x){
+            
+         // $(".color-picker").val() = x;
+            alert(x)
+            return color = "#"+x;
+        }
+/*
+        getColor = function(){
+            return color;
+        }
+
+        console.log("Changed to: "+color)
+       */
+       
         var drawingManager = new google.maps.drawing.DrawingManager({
           drawingMode: google.maps.drawing.OverlayType.MARKER,
           drawingControl: true,
@@ -56,16 +77,16 @@
             drawingModes: ['polygon']
           },
           markerOptions: {icon: 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png'},
-          circleOptions: {
-            fillColor: color,
-            fillOpacity: 0.8,
+          polygonOptions: { 
+           // fillColor: color,
             strokeWeight: 3,
-            strokeColor: color,
+           // strokeColor: color,
             clickable: true,
             editable: true,
             zIndex: 1
           }
         });
+
         drawingManager.setMap(map);
     
 
@@ -78,9 +99,18 @@
            // lineCoords.push(arr.join(',\n'));
             lineCoords.push(JSON.stringify(arr));
             console.log(lineCoords);
+            drawingManager.setOptions({fillColor: "black"});
+            $( "#ltdlng" ).val( arr );
+
+            alert($( "#ltdlng" ).val() + " " + color);
+            $( "#addTerritory" ).submit();
         });
 
+        
+
       }
+
+     
 
 /*       var poly;
         var map;
