@@ -1,6 +1,6 @@
 @include('layouts.header')
 @include('layouts.nav')
-
+<div class="container-main">
     <div class="container">
         <div class="row registerform">
             <div class="col-md-12">
@@ -115,7 +115,6 @@
                     </div><!--panel_body-->
                 </div><!--panel panel-card margin-b-30-->
             </div><!--col-md-12-->
-        </div><!--container-->
-    
-
+        </div><!--container--> 
+</div>
 @include('layouts.footer')
