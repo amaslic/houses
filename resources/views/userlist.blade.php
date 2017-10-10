@@ -1,5 +1,6 @@
 @include('layouts.header')
 @include('layouts.nav')
+<div class="container-main">
 <div class="row registerform">
 <div class="col-md-12">
    <div class="panel panel-card recent-activites">
@@ -69,5 +70,6 @@
       </div>
       <!-- End .panel --> 
    </div>
+</div>
 </div>
     @include('layouts.footer')
