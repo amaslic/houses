@@ -53,9 +53,7 @@
 
         
    marker{{$location->id}}.setMap(map);
-    google.maps.event.addListener(map, 'click', function(event) {
-       addMarker(event.latLng, map);
-     });
+    
       marker{{$location->id}}.addListener('click', function() {
           infowindow{{$location->id}}.open(map, marker{{$location->id}});
         });
@@ -63,7 +61,9 @@
          
         
    @endforeach
-    
+    google.maps.event.addListener(map, 'click', function(event) {
+       addMarker(event.latLng, map);
+     });
      {{--  // Add a marker at the center of the map.
      addMarker(bangalore, map);  --}}
      
