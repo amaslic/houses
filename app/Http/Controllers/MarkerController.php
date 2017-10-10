@@ -20,7 +20,11 @@ class MarkerController extends Controller
     $marker= Marker::create([
         'user_id' => Auth::id(),
         'latlng' => request('latlng'),
-        'status' => request('marker')
+        'status' => request('marker'),
+        'fullname' => request('fullname'),
+        'email' => request('email'),
+        'phonenumber' =>request('phone'),
+        'notes'=>request('notes'),
       
 
     ]);

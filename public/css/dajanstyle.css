@@ -10,3 +10,14 @@
     width:100%;
     padding-top:5px;
 }
+.modal-task{
+    margin-top:5px;
+}
+.modal-content{
+    background-color:#2f323b;
+
+}
+.input-group-addon{
+    color: #e0e0e0;
+    width: 40px;;
+}
