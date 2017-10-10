@@ -30,13 +30,14 @@
     var contentString = '<div id="content">'+
             '<div id="siteNotice">'+
             '</div>'+
-            '<h1 id="firstHeading" class="firstHeading">{{$location->status}}</h1>'+
+            '<h3 id="firstHeading" class="firstHeading">{{$location->status}}</h3>'+
             '<div id="bodyContent">'+
-            '<p><b>{{$location->fullname}}</b> </p>' +
-            '<p>{{$location->email}} </p> '+
-            '<p>{{$location->phonenumber}} </p> '+
-            '<p>{{$location->created_at}} </p> '+
-            '<p>{{$location->notes}} </p> '+
+            '<p><b>Full Name:</b> {{$location->fullname}} </p>' +
+            '<p><b>Email:</b>{{$location->email}} </p> '+
+            '<p><b>Phone Number:</b>{{$location->phonenumber}} </p> '+
+            '<p><b>Date and Time:</b> </br>{{$location->created_at}} </p> '+
+            '<p><b>Comment: </b>{{$location->notes}} </p> '+
+            '<p><a href="editpin/{{$location->id}}">Edit Pin</a></p> '+
             '</div>'+
             '</div>';
    var infowindow{{$location->id}} = new google.maps.InfoWindow({
@@ -45,7 +46,7 @@
      var location = new google.maps.LatLng{{$location->latlng}};
            var marker{{$location->id}} = new google.maps.Marker({
              position: location,
-             label: '{{$location->status}}',
+             {{--  label: '{{$location->status}}',  --}}
               map: map,
               infowindow: infowindow{{$location->id}}
    });

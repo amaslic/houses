@@ -30,3 +30,5 @@ Route::post('createTerritory', 'TerritoryController@createTerritory');
 Route::get('viewmap', 'HomeController@viewmap');
 Route::get('viewusermap', 'HomeController@viewusermap');
 Route::post('addmarker', 'MarkerController@addmarker');
+Route::get('editpin/{id}','MarkerController@editpin');
+Route::post('editmarker/{id}','MarkerController@editmarker');

@@ -5,7 +5,7 @@
                 <div class="page-header-inner ">
                     <!-- BEGIN LOGO -->
                     <div class="page-logo">
-                        <a href="home"><img src="images/logo.png" alt="absolute admin" class="img-fluid logo-default"/> </a>
+                        <a href="/home"><img src="/images/logo.png" alt="absolute admin" class="img-fluid logo-default"/> </a>
                     </div>
 
                     <div class="menu-toggler sidebar-toggler">

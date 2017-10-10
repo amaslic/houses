@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Marker;
+use App\Pin;
 
 use Auth;
 
@@ -31,5 +32,22 @@ class MarkerController extends Controller
         return back();
         
 
+    }
+    public function editpin( $id){
+        $editpins = Marker::find($id);
+        $pins = Pin::get();
+        return view('editpin',compact('editpins','pins'));
+
+    }
+    public function editmarker( $id){
+        $marker = Marker::find($id);
+        $marker->status = request('marker');
+        $marker->fullname = request('fullname');
+         $marker->email = request('email');
+          $marker->phonenumber = request('phone');
+           $marker->notes = request('notes');
+           $marker->save();
+
+           return redirect('home');
     }
 }

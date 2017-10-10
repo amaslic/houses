@@ -12,21 +12,21 @@
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400%7CRaleway:300,400,500,600,700%7CLato:300,400,400italic,600,700" rel="stylesheet" type="text/css" />
 
         <!-- CORE CSS -->
-        <link href="plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-        <link href="plugins/metis-menu/metisMenu.min.css" rel="stylesheet" type="text/css" />
-        <link href="plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
-        <link href="plugins/simple-line-icons-master/css/simple-line-icons.css" rel="stylesheet" type="text/css" />
-        <link href="plugins/animate/animate.css" rel="stylesheet" type="text/css" />
-        <link href="plugins/c3/c3.min.css" rel="stylesheet">
-        <link href="plugins/widget/widget.css" rel="stylesheet">
-        <link href="plugins/calendar/fullcalendar.min.css" rel="stylesheet">
-        <link href="plugins/ui/jquery-ui.css" rel="stylesheet">
+        <link href="/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+        <link href="/plugins/metis-menu/metisMenu.min.css" rel="stylesheet" type="text/css" />
+        <link href="/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+        <link href="/plugins/simple-line-icons-master/css/simple-line-icons.css" rel="stylesheet" type="text/css" />
+        <link href="/plugins/animate/animate.css" rel="stylesheet" type="text/css" />
+        <link href="/plugins/c3/c3.min.css" rel="stylesheet">
+        <link href="/plugins/widget/widget.css" rel="stylesheet">
+        <link href="/plugins/calendar/fullcalendar.min.css" rel="stylesheet">
+        <link href="/plugins/ui/jquery-ui.css" rel="stylesheet">
 
         <!-- THEME CSS -->
-        <link href="css/style.css" rel="stylesheet" type="text/css" />
-         <link href="css/dajanstyle.css" rel="stylesheet" type="text/css" />
-        <link href="css/zoranstyle.css" rel="stylesheet" type="text/css" />
-        <link href="css/theme/dark.css" rel="stylesheet" type="text/css" />
+        <link href="/css/style.css" rel="stylesheet" type="text/css" />
+         <link href="/css/dajanstyle.css" rel="stylesheet" type="text/css" />
+        <link href="/css/zoranstyle.css" rel="stylesheet" type="text/css" />
+        <link href="/css/theme/dark.css" rel="stylesheet" type="text/css" />
         <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
         <!--[if lt IE 9]>
