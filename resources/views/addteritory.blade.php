@@ -12,15 +12,15 @@
     height: 480px; padding-top: 150px;" ></div>
     <form method="POST" id="addTerritory" action="createTerritory">
      {{ csrf_field() }}
-        <select>
+        <select name="user_id">
             @foreach($users as $user)
-                <option name="{{$user->id}}">
+                <option name="{{$user->id}}" value="{{$user->id}}">
                     {{$user->name}} ({{$user->email}})
                 </option>
             @endforeach
         </select>
         <div>
-            Color: <input onchange="changeColor(this.value)" class="jscolor color-picker" value="ab2567" name="color"> <button class="test-btn">Test color</button>
+            Color: <input onchange="changeColor(this.value)" class="jscolor color-picker" value="ab2567" name="color">
         </div>
         <input type="hidden" name="ltdlng" id="ltdlng" />
     </form>

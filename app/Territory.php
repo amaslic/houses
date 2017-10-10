@@ -10,7 +10,7 @@ class Territory extends Model
         'color',
         'description',
         'ltdlng',
-        //'user_id',
+        'user_id',
 
     ];
 }

@@ -13,7 +13,7 @@ class TerritoryController extends Controller
    
     public function createTerritory(){
         $territory = Territory::create([
-            /*'user_id' => Auth::id(),*/
+            'user_id' => request('user_id'),
             'ltdlng' => request('ltdlng'),
             'color' => request('color'),
             'description' => "test description"

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTerritoriesTable extends Migration
+class AddUserToTerritories extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,11 @@ class CreateTerritoriesTable extends Migration
      */
     public function up()
     {
-        Schema::create('territories', function (Blueprint $table) {
-            $table->increments('id');
-            $table->timestamps();
-            $table->text('ltdlng'); 
-            $table->text('description'); 
-            $table->string('color'); 
+        //
+        Schema::table('territories', function($table)
+        {
+            $table->integer('user_id');
         });
-
-      
     }
 
     /**
@@ -31,6 +27,6 @@ class CreateTerritoriesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('territories');
+        //
     }
 }
