@@ -37,13 +37,24 @@
             '<p><b>Phone Number:</b>{{$location->phonenumber}} </p> '+
             '<p><b>Date and Time:</b> </br>{{$location->created_at}} </p> '+
             '<p><b>Comment: </b>{{$location->notes}} </p> '+
-            '<p><a href="editpin/{{$location->id}}">Edit Pin</a></p> '+
+            '<p><a href="editpin/{{$location->id}}">Edit Pin</a> | <a href="deletepin/{{$location->id}}">Delete Pin</a></p> '+
+             '<p><a href="makesale/{{$location->id}}">Make Sale</a></p> '+
+
             '</div>'+
             '</div>';
    var infowindow{{$location->id}} = new google.maps.InfoWindow({
           content: contentString
         });
      var location = new google.maps.LatLng{{$location->latlng}};
+    
+  
+
+  
+    
+    
+   
+     
+
            var marker{{$location->id}} = new google.maps.Marker({
              position: location,
              {{--  label: '{{$location->status}}',  --}}

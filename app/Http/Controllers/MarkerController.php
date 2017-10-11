@@ -50,4 +50,9 @@ class MarkerController extends Controller
 
            return redirect('home');
     }
+    public function deletemarker($id){
+        $marker = Marker::find($id);
+        $marker->delete();
+        return redirect('home');
+    }
 }

@@ -32,3 +32,6 @@ Route::get('viewusermap', 'HomeController@viewusermap');
 Route::post('addmarker', 'MarkerController@addmarker');
 Route::get('editpin/{id}','MarkerController@editpin');
 Route::post('editmarker/{id}','MarkerController@editmarker');
+Route::get('makesale/{id}', 'SaleController@makesale');
+Route::post('submitsale/{id}', 'SaleController@submitsale');
+Route::get('deletepin/{id}','MarkerController@deletemarker');
