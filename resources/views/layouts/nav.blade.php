@@ -397,7 +397,7 @@
 							   
 							   
                             <li class="dropdown dropdown-quick-sidebar-toggler">
-                                <a href="logout" class="dropdown-toggle">
+                                <a href="/logout" class="dropdown-toggle">
                                     <i class="icon-logout"></i>
                                 </a>
                             </li>
