@@ -47,18 +47,11 @@
         });
      var location = new google.maps.LatLng{{$location->latlng}};
     
-  
-
-  
-    
-    
-   
-     
-
            var marker{{$location->id}} = new google.maps.Marker({
              position: location,
              {{--  label: '{{$location->status}}',  --}}
               map: map,
+              icon: '{{$location->icon}}',
               infowindow: infowindow{{$location->id}}
    });
   
