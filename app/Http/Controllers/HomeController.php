@@ -7,6 +7,9 @@ use Auth;
 use App\User;
 use App\Marker;
 use App\Pin;
+use App\Sale;
+use Carbon\Carbon;
+use Log;
 class HomeController extends Controller
 {
     /**
@@ -28,8 +31,35 @@ class HomeController extends Controller
     {
         if(Auth::check()){
            if(Auth::user()->isAdmin()){
-               return view('dashboard');
-           }
+                $todaysales = Sale::where('created_at', '>=', Carbon::now()->subDay())->get();
+                $todaysalescount = $todaysales->count();
+                $todaysalessum=$todaysales->sum('price');
+               $lastweeksales = Sale::where('created_at', '>=', Carbon::now()->subDay(7))->get();
+               $lastweeksalescount= $lastweeksales->count();
+                $lastweeksalessum=$lastweeksales->sum('price');
+
+               $lastmonthsales = Sale::where('created_at', '>=', Carbon::now()->subMonth())->get();
+               $lastmonthsalescount = $lastmonthsales->count();
+               $lastmonthsalessum = $lastmonthsales->sum('price');
+               
+               $lastyearsales = Sale::where('created_at', '>=', Carbon::now()->subYear())->get();
+               $lastyearsalescount = $lastyearsales->count();
+               $lastyearsalessum = $lastyearsales->sum('price');
+               $totalsales = Sale::get();
+               $totalsalescount=$totalsales->count();
+               $totalsalessum = $totalsales->sum('price');
+            
+            //    return view('dashboard',compact('todaysales','lastweeksales','lastmonthsales','lastyearsales','totalsales'));
+        // $todaysalesuser = Sale::select('user_name')->distinct()->get();
+        //  $todaysalesuser2 = Sale::select('user_id')->count();
+
+       
+       
+           
+         return view('dashboard',compact('todaysalescount','lastweeksalescount','lastweeksalessum','lastmonthsalescount'
+         ,'lastmonthsalessum','lastyearsalescount','lastyearsalessum','todaysalessum','totalsalescount',
+        'totalsalessum'));
+        }
                else{
                      $locations = Marker::where('user_id', Auth::id())->get();
                     $pins = Pin::get();
