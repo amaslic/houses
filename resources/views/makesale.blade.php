@@ -10,7 +10,7 @@
                 <div class="panel-body" style="padding-top:5px;">
                     <form class="form-horizontal" action="/submitsale/{{$editpins->id}} " method="post">
                      {{ csrf_field() }}
-                     <input type="hidden" name="id" id="id" value="{{$editpins->id}}"></input>
+                     <input type="hidden" name="id" id="id" value="{{$editpins->id}}" ></input>
                      <fieldset>
                         <!-- Form Name -->
                         <!-- Text input-->
@@ -18,7 +18,7 @@
                            <div class="col-md-12">
                               <div class="input-group">
                                  <span class="input-group-addon"><i class="fa fa-map-marker "></i></span>
-                                 <select class="form-control" name="marker">
+                                 <select class="form-control" name="marker" required>
                                  <option value="Sold">Sold</option>
                                 
                                  </select>
@@ -29,7 +29,7 @@
                            <div class="col-md-12">
                               <div class="input-group">
                                  <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                                 <input name="fullname" placeholder="Full Name" class="form-control" type="text" value="{{$editpins->fullname}}">
+                                 <input name="fullname" placeholder="Full Name" class="form-control" type="text" value="{{$editpins->fullname}}" required>
                               </div>
                            </div>
                         </div>
@@ -38,7 +38,7 @@
                            <div class="col-md-12">
                               <div class="input-group">
                                  <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
-                                 <input name="email" placeholder="E-Mail Address" class="form-control" type="text" value="{{$editpins->email}}">
+                                 <input name="email" placeholder="E-Mail Address" class="form-control" type="text" value="{{$editpins->email}}" required>
                               </div>
                            </div>
                         </div>
@@ -56,7 +56,7 @@
                            <div class="col-md-12 inputGroupContainer">
                               <div class="input-group">
                                  <span class="input-group-addon"><i class="fa fa-pencil"></i></span>
-                                 <textarea class="form-control" name="notes" placeholder="Notes" value="{{$editpins->notes}}">{{$editpins->notes}}</textarea>
+                                 <textarea class="form-control" name="notes" placeholder="Notes" value="{{$editpins->notes}}" >{{$editpins->notes}}</textarea>
                               </div>
                            </div>
                         </div>
@@ -65,7 +65,7 @@
                            <div class="col-md-12">
                               <div class="input-group">
                                  <span class="input-group-addon"><i class="fa fa-dollar"></i></span>
-                                 <input name="price" placeholder="Price" class="form-control" type="text" value="">
+                                 <input name="price" placeholder="Price" class="form-control" type="text" value="" required>
                               </div>
                            </div>
                         </div>
