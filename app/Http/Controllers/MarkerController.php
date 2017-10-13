@@ -18,6 +18,9 @@ class MarkerController extends Controller
     //     'status' =>  'required|max:255',
 
     // ]);
+   $status = request('marker');
+   $icon = Pin::where('name', $status)->select('color')->first();
+   $icon = $icon->color.'.png';
     $marker= Marker::create([
         'user_id' => Auth::id(),
         'latlng' => request('latlng'),
@@ -26,6 +29,7 @@ class MarkerController extends Controller
         'email' => request('email'),
         'phonenumber' =>request('phone'),
         'notes'=>request('notes'),
+        'icon'=>$icon,
       
 
     ]);
@@ -40,15 +44,19 @@ class MarkerController extends Controller
 
     }
     public function editmarker( $id){
+        $status = request('marker');
+        $icon = Pin::where('name', $status)->select('color')->first();
+        $icon = $icon->color.'.png';
         $marker = Marker::find($id);
         $marker->status = request('marker');
         $marker->fullname = request('fullname');
-         $marker->email = request('email');
-          $marker->phonenumber = request('phone');
-           $marker->notes = request('notes');
-           $marker->save();
+        $marker->email = request('email');
+        $marker->phonenumber = request('phone');
+        $marker->notes = request('notes');
+        $marker->icon = $icon;
+        $marker->save();
 
-           return redirect('home');
+        return redirect('home');
     }
     public function deletemarker($id){
         $marker = Marker::find($id);

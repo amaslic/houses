@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Marker;
 use App\Sale;
+use App\Pin;
 use Auth;
 class SaleController extends Controller
 {
@@ -31,8 +32,13 @@ class SaleController extends Controller
     $marker = Marker::find($id);
     $marker->status = 'Sold';
     $marker->save();
+    $status = request('marker');
+    $icon = Pin::where('name', $status)->select('color')->first();
+    $icon = $icon->color.'.png';
+    $marker->icon = $icon;
+    $marker->save();
 
-        return redirect('home'); 
+     return redirect('home'); 
 
     }
 }
