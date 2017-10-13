@@ -51,7 +51,7 @@
              position: location,
              {{--  label: '{{$location->status}}',  --}}
               map: map,
-              icon: '{{$location->icon}}',
+              icon: '/images/{{$location->icon}}',
               infowindow: infowindow{{$location->id}}
    });
   
