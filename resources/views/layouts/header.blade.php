@@ -22,11 +22,16 @@
         <link href="/plugins/calendar/fullcalendar.min.css" rel="stylesheet">
         <link href="/plugins/ui/jquery-ui.css" rel="stylesheet">
 
+         <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdn.rawgit.com/prashantchaudhary/ddslick/master/jquery.ddslick.min.js" ></script>
+
         <!-- THEME CSS -->
         <link href="/css/style.css" rel="stylesheet" type="text/css" />
          <link href="/css/dajanstyle.css" rel="stylesheet" type="text/css" />
         <link href="/css/zoranstyle.css" rel="stylesheet" type="text/css" />
         <link href="/css/theme/dark.css" rel="stylesheet" type="text/css" />
+
+        
         <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
         <!--[if lt IE 9]>
