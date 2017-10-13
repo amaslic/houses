@@ -2,30 +2,91 @@
 @include('layouts.nav')
 
 
+<style>
+    body, html {
+    height: 100%;
+    width: 100%;
+    }
+    .modal{
+        z-index: 999;
+    }
+    .modal-backdrop{
+        z-index: 990;
+    }
+    .modal-dialog{
+        padding-top: 150px;
+    }
+    #map{
 
+        min-height: 884px;
+        height: 100%;
+    }
+</style>
 
 <div class="container-main">
+    
+    <div id="map"></div>
 
-
-
-   <!-- <div id="map-canvas" style="width: 620px;
-    height: 480px; padding-top: 150px;" ></div>-->
-    <div id="map" style="width: 620px;
-    height: 480px; padding-top: 150px;" ></div>
-    <form method="POST" id="addTerritory" action="createTerritory">
-     {{ csrf_field() }}
-        <select name="user_id">
-            @foreach($users as $user)
-                <option name="{{$user->id}}" value="{{$user->id}}">
-                    {{$user->name}} ({{$user->email}})
-                </option>
-            @endforeach
-        </select>
-        <div>
-            Color: <input onchange="changeColor(this.value)" class="jscolor color-picker" value="ab2567" name="color">
-        </div>
-        <input type="hidden" name="ltdlng" id="ltdlng" />
-    </form>
+    <button type="button" id="modal" class="btn btn-secondary" style="display:none;" data-toggle="modal" data-target="#myModal"> Launch demo modal</button>
+    <div  class="modal fade" name="markers" id="myModal" tabindex="-1" role="dialog" aria-hidden="true" style="display: none;">
+   <div class="modal-dialog">
+      <div class="modal-content">
+         <div class="modal-header text-center">
+            <h4 class="modal-title">Create territory</h4>
+         </div>
+         <div class="modal-body">
+            <div class="row ">
+               <div class="col-md-12">
+                  <form class="form-horizontal" method="POST" id="addTerritory" action="createTerritory">
+                     {{ csrf_field() }}
+                     <input type="hidden" name="ltdlng" id="ltdlng" />
+                     
+                     <fieldset>
+                        <!-- Form Name -->
+                        <!-- Text input-->
+                        <div class="form-group">
+                           <div class="col-md-12">
+                              <div class="input-group">
+                                 <span class="input-group-addon"><i class="fa fa-user "></i></span>
+                                    <select name="user_id">
+                                        @foreach($users as $user)
+                                            <option name="{{$user->id}}" value="{{$user->id}}">
+                                                {{$user->name}} ({{$user->email}})
+                                            </option>
+                                        @endforeach
+                                    </select>  
+                              </div>
+                           </div>
+                        </div>
+                        <div class="form-group">
+                           <div class="col-md-12">
+                              <div class="input-group">
+                                 <span class="input-group-addon"><i class="fa fa-paint-brush"></i></span>
+                                    <input  class="jscolor color-picker form-control" value="ab2567" name="color">
+                              </div>
+                           </div>
+                        </div>
+                        <div class="form-group">
+                           <div class="col-md-12">
+                              <div class="input-group">
+                                 <span class="input-group-addon"><i class="fa fa-file-text"></i></span>
+                                    <textarea  class="form-control" value="ab2567" name="description"> </textarea>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="form-group">
+                           <div class="col-md-12">
+                              <button type="submit" class="btn btn-warning pull-right">Add territory <span class="glyphicon glyphicon-send"></span></button>
+                           </div>
+                        </div>
+                     </fieldset>
+                  </form>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
 
 </div>
 
@@ -37,7 +98,8 @@
 
     $(document).ready(function(){
         var lineCoords = [];
-      
+
+       
 
         initMap = function () {
         var map = new google.maps.Map(document.getElementById('map'), {
@@ -55,22 +117,6 @@
             }
             return "#" + hex(rgb[1]) + hex(rgb[2]) + hex(rgb[3]);
         }
-
-        
-
-         changeColor = function(x){
-            
-         // $(".color-picker").val() = x;
-            alert(x)
-            return color = "#"+x;
-        }
-/*
-        getColor = function(){
-            return color;
-        }
-
-        console.log("Changed to: "+color)
-       */
        
         var drawingManager = new google.maps.drawing.DrawingManager({
           drawingMode: google.maps.drawing.OverlayType.MARKER,
@@ -92,114 +138,75 @@
 
         drawingManager.setMap(map);
 
-       var c = [];  
        var i =  0;
        var z = [];
 
-        Array.prototype.clear = function() {
-    this.splice(0, this.length);
-};
+       
 
         @foreach($territory as $t)
-
-       
-             q =  '{{$t->ltdlng}}' ;
+  
+            q =  '{{$t->ltdlng}}' ;
             var y = q.replace(/&quot;/g, '\"');
-            console.log(y);
+           // console.log(y);
 
              z.push(JSON.parse('['+y+']'));
 
-            console.log(z);
+           // console.log(z);
+
+          
+
+            var infowindow = new google.maps.InfoWindow({
+                size: new google.maps.Size(150, 50)
+            });
+
+            google.maps.event.addListener(map, 'click', function() {
+                infowindow.close();
+            });
+
+           
+                
 
                 var x = new google.maps.Polygon({
-
                     path: z[i],
                     strokeColor: '#'+'{{$t->color}}',
                     strokeOpacity: 0.8,
                     strokeWeight: 2,
                     fillColor: '#'+'{{$t->color}}',
-                    fillOpacity: 0.35
+                    fillOpacity: 0.35,
+                   // infowindow: contentString,
+                    clickable: true,
+                    editable: false
                 });
-           
+
+            google.maps.event.addListener(x, 'click', function(event) {
+                var contentString = "{{$t->description}}";
+                infowindow.setContent(contentString);
+                infowindow.setPosition(event.latLng);
+                infowindow.open(map);
+            });
             i++;
             x.setMap(map);
-            c.clear();
+          
         @endforeach
-        //console.log(y);
-        console.log(z)
+
         google.maps.event.addListener(drawingManager, 'polygoncomplete', function(polygon) {
             drawingManager.setDrawingMode(null);
             var arr = [];
             polygon.getPath().forEach(function(latLng){arr.push(JSON.stringify(latLng));})
-           //polygon.getPath().forEach(function(latLng){arr.push(latLng);})
-
-            //lineCoords.push(arr.join(',\n'));
             lineCoords.push( arr  );
-            //console.log(lineCoords);
             drawingManager.setOptions({fillColor: "black"});
             $( "#ltdlng" ).val( lineCoords );
 
-            alert($( "#ltdlng" ).val() + " " + color);
-            $( "#addTerritory" ).submit();
+           // alert($( "#ltdlng" ).val() + " " + color);
+           // $( "#addTerritory" ).submit();
+           document.getElementById("modal").click();
         });
 
         
 
       }
 
-     
-
-/*       var poly;
-        var map;
-        var image = {
-            url: "https://maps.gstatic.com/mapfiles/ms2/micons/red.png",
-            size: new google.maps.Size(1, 1),
-        };
-        var lineCoords = [];
-       
-        
-
-        initialize = function () {
-            var mapOptions = {
-            zoom: 2,
-            center: new google.maps.LatLng(15,0),
-            draggableCursor: 'pointer',
-            draggingCursor: 'pointer',
-            panControl: false
-        };
-        map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
-        var polyOptions = {
-            strokeColor: '#000000',
-            strokeOpacity: 1.0,
-            strokeWeight: 2,
-            fillColor: "#000000"
-        };
-        poly = new google.maps.Polyline(polyOptions);
-        google.maps.event.addListener(map, 'click', addLatLng);
-        }
-        google.maps.event.addDomListener(window, 'load', initialize);
-
-
-
-        addLatLng = function(event) {
-            poly.setMap(map);
-            var path = poly.getPath();
-            path.push(event.latLng);
-            var marker = new google.maps.Marker({
-                position: event.latLng,
-                map: map,
-                title: 'Test Title',
-                icon: image
-            });
-            var markerLat = (event.latLng.lat()).toFixed(6);
-            var markerLng = (event.latLng.lng()).toFixed(6);
-            lineCoords.push(markerLat, markerLng);
-
-            console.log(lineCoords);
-
-            console.log("Lat: " + markerLat + " Lng: " + markerLng)
-               
-        } */
+ 
     });
 </script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC2_-ZK1vYH7btuM7Qoz5anEajPXI5YtiM&libraries=drawing&callback=initMap"

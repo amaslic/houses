@@ -16,7 +16,7 @@ class TerritoryController extends Controller
             'user_id' => request('user_id'),
             'ltdlng' => request('ltdlng'),
             'color' => request('color'),
-            'description' => "test description"
+            'description' => request('description'),
         ]);
         return back();
     }
