@@ -16,6 +16,7 @@ class SaleController extends Controller
     }
     public function submitsale($id){
        $sale= Sale::create([
+        'user_name' => Auth::user()->name,
         'user_id' => Auth::id(),
         'status' => request('marker'),
         'fullname' => request('fullname'),

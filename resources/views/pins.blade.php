@@ -61,6 +61,22 @@
         </div><!--row registerform-->
     </div><!--container-->
 
+
+
+    {{--  <div class="drop-down">    
+	   <select name="options">     
+	   <option class="en" value="en" 
+	   style="background-image:url('images/red.png');">English</option>        
+	   <option class="fr" value="fr"
+	   style="background-image:url('images/green.png');">French</option>    
+	   <option class="nl" value="nl"
+	   style="background-image:url('images/blue.png');">Nederlands</option>    
+	   </select>     
+	</div>   --}}
+
+
+
+    
         <!--ADD STATUS FORM-->
         <div class="container" style="padding:0;">
             <div class="col-md-12">
@@ -68,6 +84,7 @@
                     <div class="col-sm-12">
                         <div class="card-header card_header">
                             <p><i class="fa fa-folder-open-o" aria-hidden="true"></i> Add Status</p>
+                            
                             <a class="btn btn-success btn-clickable right" href="#">
                                 <i class="fa fa-chevron-down"></i> 
                             </a>
@@ -77,14 +94,20 @@
                     <div class="row">
                         <form class="form-inline ml" method="POST" action="/addpin">
                             {{ csrf_field() }}
-                            
-                            <div class="pp pl pr form-group{{ $errors->has('name') ? ' has-error' : '' }}">
+                           
+                            <div  class="drop-down pp pl pr form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                                 <label for="name" class="sr-only control-label"></label>
-                                <select name="color" class="form-control mb-2 mr-sm-2 mb-sm-0" style="color:#6b737b">
-                                    <option value="red" class="cw">Red</option>
-                                    <option value="green" class="cw">Green</option>
-                                    <option value="blue" class="cw">Blue</option>
+                                   
+                                <select name="color" class=" mb-2 mr-sm-2 mb-sm-0" >
+                                    <option value="red" style="background-image:url('images/red.png');"></option>        
+                                    <option value="green" style="background-image:url('images/green.png');"></option>    
+                                    <option value="blue" style="background-image:url('images/blue.png');"></option> 
+                                    
+                                    {{--  <option value="1" class="cw">Red</option>
+                                    <option value="2" class="cw">Green</option>
+                                    <option value="3" class="cw">Blue</option>  --}}
                                 </select>
+                                
                             </div>
                             <div class="pp pr form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                                 <label for="name" class="sr-only control-label"></label>
@@ -117,4 +140,5 @@
             </div><!--col-md-12-->
         </div><!--container--> 
 </div>
+
 @include('layouts.footer')
