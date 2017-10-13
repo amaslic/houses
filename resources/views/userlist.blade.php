@@ -1,8 +1,8 @@
 @include('layouts.header')
 @include('layouts.nav')
-<div class="container-main">
+
 <div class="row registerform">
-<div class="col-md-12">
+<div class="col-md-12  container-main">
    <div class="panel panel-card recent-activites">
       <!-- Start .panel -->
       <div class="card-header">
@@ -42,6 +42,10 @@
                            " style="width: 96px;">
                            <strong>Phone Number</strong>
                         </th>
+                         <th class="sorting" tabindex="0" aria-controls="basic-datatables" rowspan="1" colspan="1" aria-label="
+                           " style="width: 116px;">
+                           <strong>View map</strong>
+                        </th>
                         <th class="sorting" tabindex="0" aria-controls="basic-datatables" rowspan="1" colspan="1" aria-label="
                            " style="width: 116px;">
                            <strong>Role</strong>
@@ -56,6 +60,12 @@
                         <td>{{$user->email}}</td>
                         <td>{{$user->sex}}</td>
                         <td>{{$user->phone_number}}</td>
+                        <td> 
+                           <!-- <form action="territoryByUser/1" method="GET">-->
+                                <a style = "padding: 3px; font-size: 10px" value ="{{$user->id}}" name="user_id" class="btn btn-danger btn-xs" href="{{ URL::to('territoryByUser/'.$user->id) }}">View map</a>
+                            <!--     <button type="submit" style = "padding: 3px; font-size: 10px" value ="{{$user->id}}" name="user_id" class="btn btn-danger btn-xs">View map</button>
+                           </form> -->
+                        </td>
                         @if($user->role == 'admin')
                         <td> <span class="tag label-success">{{$user->role}}</span></td>
                         @else
@@ -71,5 +81,5 @@
       <!-- End .panel --> 
    </div>
 </div>
-</div>
+
     @include('layouts.footer')

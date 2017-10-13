@@ -33,4 +33,15 @@ class TerritoryController extends Controller
             return back();
         }
     }
+
+    public function territoryByUser($id){
+        if(Auth::user()->isAdmin()){
+            $users = User::find($id);
+            $territory = Territory::where('user_id', $id)->get();
+            
+            return view ('viewusermap', compact('users', 'territory'));
+        }else {
+            return back();
+        }
+    }
 }

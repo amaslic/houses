@@ -1655,7 +1655,7 @@ div.fancy-select ul.options li.hover, .select2-drop {
 .btn-secondary, .btn-secondary:hover, .btn-secondary:focus{    background-color: #dae6ec;
     border-color: #dae6ec;}
     .registerform{
-        padding-top:50px;
+       /* padding-top:50px; */
     }
 .pp{
     padding: 7px 7px 7px 7px;
