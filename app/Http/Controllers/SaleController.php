@@ -29,18 +29,16 @@ class SaleController extends Controller
 
     ]);
 
-     
     $marker = Marker::find($id);
-    
     $marker->status = 'Sold';
     $marker->save();
     $status = request('marker');
-        $icon = Pin::where('name', $status)->select('color')->first();
-        $icon = $icon->color.'.png';
-        $marker->icon = $icon;
-        $marker->save();
+    $icon = Pin::where('name', $status)->select('color')->first();
+    $icon = $icon->color.'.png';
+    $marker->icon = $icon;
+    $marker->save();
 
-        return redirect('home'); 
+     return redirect('home'); 
 
     }
 }

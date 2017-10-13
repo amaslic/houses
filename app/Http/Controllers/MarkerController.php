@@ -50,13 +50,13 @@ class MarkerController extends Controller
         $marker = Marker::find($id);
         $marker->status = request('marker');
         $marker->fullname = request('fullname');
-         $marker->email = request('email');
-          $marker->phonenumber = request('phone');
-           $marker->notes = request('notes');
-           $marker->icon = $icon;
-           $marker->save();
+        $marker->email = request('email');
+        $marker->phonenumber = request('phone');
+        $marker->notes = request('notes');
+        $marker->icon = $icon;
+        $marker->save();
 
-           return redirect('home');
+        return redirect('home');
     }
     public function deletemarker($id){
         $marker = Marker::find($id);
