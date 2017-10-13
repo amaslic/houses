@@ -6,6 +6,8 @@
 
 <div class="container-main">
 
+
+
    <!-- <div id="map-canvas" style="width: 620px;
     height: 480px; padding-top: 150px;" ></div>-->
     <div id="map" style="width: 620px;
@@ -24,6 +26,7 @@
         </div>
         <input type="hidden" name="ltdlng" id="ltdlng" />
     </form>
+
 </div>
 
 
@@ -88,19 +91,53 @@
         });
 
         drawingManager.setMap(map);
-    
 
+       var c = [];  
+       var i =  0;
+       var z = [];
+
+        Array.prototype.clear = function() {
+    this.splice(0, this.length);
+};
+
+        @foreach($territory as $t)
+
+       
+             q =  '{{$t->ltdlng}}' ;
+            var y = q.replace(/&quot;/g, '\"');
+            console.log(y);
+
+             z.push(JSON.parse('['+y+']'));
+
+            console.log(z);
+
+                var x = new google.maps.Polygon({
+
+                    path: z[i],
+                    strokeColor: '#'+'{{$t->color}}',
+                    strokeOpacity: 0.8,
+                    strokeWeight: 2,
+                    fillColor: '#'+'{{$t->color}}',
+                    fillOpacity: 0.35
+                });
+           
+            i++;
+            x.setMap(map);
+            c.clear();
+        @endforeach
+        //console.log(y);
+        console.log(z)
         google.maps.event.addListener(drawingManager, 'polygoncomplete', function(polygon) {
             drawingManager.setDrawingMode(null);
             var arr = [];
-            polygon.getPath().forEach(function(latLng){arr.push(latLng.toString());})
-      
+            polygon.getPath().forEach(function(latLng){arr.push(JSON.stringify(latLng));})
+           //polygon.getPath().forEach(function(latLng){arr.push(latLng);})
 
-           // lineCoords.push(arr.join(',\n'));
-            lineCoords.push(JSON.stringify(arr));
-            console.log(lineCoords);
+            //lineCoords.push(arr.join(',\n'));
+            lineCoords.push( arr  );
+            //console.log(lineCoords);
             drawingManager.setOptions({fillColor: "black"});
-            $( "#ltdlng" ).val( arr );
+            $( "#ltdlng" ).val( lineCoords );
 
             alert($( "#ltdlng" ).val() + " " + color);
             $( "#addTerritory" ).submit();
