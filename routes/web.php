@@ -36,3 +36,4 @@ Route::post('editmarker/{id}','MarkerController@editmarker');
 Route::get('makesale/{id}', 'SaleController@makesale');
 Route::post('submitsale/{id}', 'SaleController@submitsale');
 Route::get('deletepin/{id}','MarkerController@deletemarker');
+Route::post('reportperuser','HomeController@index');

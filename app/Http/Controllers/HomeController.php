@@ -10,6 +10,7 @@ use App\Pin;
 use App\Sale;
 use Carbon\Carbon;
 use Log;
+use App\Territory;
 class HomeController extends Controller
 {
     /**
@@ -31,6 +32,7 @@ class HomeController extends Controller
     {
         if(Auth::check()){
            if(Auth::user()->isAdmin()){
+               $users = User::get();
                 $todaysales = Sale::where('created_at', '>=', Carbon::now()->subDay())->get();
                 $todaysalescount = $todaysales->count();
                 $todaysalessum=$todaysales->sum('price');
@@ -48,23 +50,38 @@ class HomeController extends Controller
                $totalsales = Sale::get();
                $totalsalescount=$totalsales->count();
                $totalsalessum = $totalsales->sum('price');
-            
-            //    return view('dashboard',compact('todaysales','lastweeksales','lastmonthsales','lastyearsales','totalsales'));
-        // $todaysalesuser = Sale::select('user_name')->distinct()->get();
-        //  $todaysalesuser2 = Sale::select('user_id')->count();
 
-       
-       
-           
+               $peruserform = request('peruser');
+               $peruser = User::find($peruserform);
+              
+               if(empty($peruserform)){
+                    $perusername='No Selected User';
+                    $salestodayperuser = 'Please select user';
+                    $saleslastweekperuser = '';
+                   $saleslastmonthperuser = '';
+                    $saleslastyearperuser = '';
+                    $totalsalesperuser = '';
+                }else {
+                    $salestodayperuser = Sale::where('created_at', '>=', Carbon::now()->subDay())->where('user_id',$peruser->id)->count();
+                    $saleslastweekperuser = Sale::where('created_at', '>=', Carbon::now()->subDay(7))->where('user_id',$peruser->id)->count();
+                    $saleslastmonthperuser = Sale::where('created_at', '>=', Carbon::now()->subMonth())->where('user_id',$peruser->id)->count();
+                    $saleslastyearperuser = Sale::where('created_at', '>=', Carbon::now()->subYear())->where('user_id',$peruser->id)->count();
+                    $totalsalesperuser = Sale::where('user_id',$peruser->id)->count();
+                    $perusername=$peruser->name;
+               }
+              
+
          return view('dashboard',compact('todaysalescount','lastweeksalescount','lastweeksalessum','lastmonthsalescount'
          ,'lastmonthsalessum','lastyearsalescount','lastyearsalessum','todaysalessum','totalsalescount',
-        'totalsalessum'));
+        'totalsalessum','users','perusername','salestodayperuser','saleslastweekperuser','saleslastmonthperuser',
+        'saleslastyearperuser','totalsalesperuser'));
         }
                else{
                      $locations = Marker::where('user_id', Auth::id())->get();
                     $pins = Pin::get();
+                     $territory = Territory::get();
                    
-                    return view('home', compact('locations','pins'));
+                    return view('home', compact('locations','pins','territory'));
                
                }
            
@@ -120,4 +137,5 @@ class HomeController extends Controller
         return back();
     }
     }
+   
 }

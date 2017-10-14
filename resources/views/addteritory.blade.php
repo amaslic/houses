@@ -143,7 +143,7 @@
 
        
 
-        @foreach($territory as $t)
+        {{--  @foreach($territory as $t)
   
             q =  '{{$t->ltdlng}}' ;
             var y = q.replace(/&quot;/g, '\"');
@@ -153,7 +153,7 @@
 
            // console.log(z);
 
-          
+     
 
             var infowindow = new google.maps.InfoWindow({
                 size: new google.maps.Size(150, 50)
@@ -187,7 +187,7 @@
             i++;
             x.setMap(map);
           
-        @endforeach
+        @endforeach  --}}
 
         google.maps.event.addListener(drawingManager, 'polygoncomplete', function(polygon) {
             drawingManager.setDrawingMode(null);
@@ -205,9 +205,9 @@
         
 
       }
-
- 
+{{--  initMap();  --}}
     });
+         
 </script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC2_-ZK1vYH7btuM7Qoz5anEajPXI5YtiM&libraries=drawing&callback=initMap"
          async defer></script>
