@@ -206,6 +206,7 @@
 
       }
 
+        initMap();
  
     });
 </script>

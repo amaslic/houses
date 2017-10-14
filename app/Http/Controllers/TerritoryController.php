@@ -27,7 +27,7 @@ class TerritoryController extends Controller
             
            
             $territory = Territory::get();
-            $users = User::where('id', 'user_id')->get();
+            $users = User::get();
             
             return view ('addteritory', compact('users', 'territory'));
         }else {

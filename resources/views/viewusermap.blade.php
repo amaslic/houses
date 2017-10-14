@@ -1,7 +1,6 @@
 @include('layouts.header')
 @include('layouts.nav')
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC2_-ZK1vYH7btuM7Qoz5anEajPXI5YtiM&libraries=drawing&callback=initMap"
-         async defer></script>
+
 
 <style>
     body, html {
@@ -133,7 +132,8 @@
 
     });
 </script>
-
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC2_-ZK1vYH7btuM7Qoz5anEajPXI5YtiM&libraries=drawing&callback=initMap"
+         async defer></script>
 
 
          
