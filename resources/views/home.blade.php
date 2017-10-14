@@ -59,7 +59,8 @@
                     fillColor: '#'+'{{$t->color}}',
                     fillOpacity: 0.35,
                    // infowindow: contentString,
-                    clickable: true,
+
+                    clickable: false,
                     editable: false
                 });
 
