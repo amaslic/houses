@@ -25,7 +25,54 @@
        zoom: 8,
        {{--  mapTypeId: 'terrain'  --}}
      });
-     
+
+      var i =  0;
+       var z = [];
+      @foreach($territory as $t)
+  
+            q =  '{{$t->ltdlng}}' ;
+            var y = q.replace(/&quot;/g, '\"');
+           // console.log(y);
+
+             z.push(JSON.parse('['+y+']'));
+
+           // console.log(z);
+
+          
+
+            var infowindow = new google.maps.InfoWindow({
+                size: new google.maps.Size(150, 50)
+            });
+
+            google.maps.event.addListener(map, 'click', function() {
+                infowindow.close();
+            });
+
+           
+                
+
+                var x = new google.maps.Polygon({
+                    path: z[i],
+                    strokeColor: '#'+'{{$t->color}}',
+                    strokeOpacity: 0.8,
+                    strokeWeight: 2,
+                    fillColor: '#'+'{{$t->color}}',
+                    fillOpacity: 0.35,
+                   // infowindow: contentString,
+                    clickable: true,
+                    editable: false
+                });
+
+            google.maps.event.addListener(x, 'click', function(event) {
+                var contentString = "{{$t->description}}";
+                infowindow.setContent(contentString);
+                infowindow.setPosition(event.latLng);
+                infowindow.open(map);
+            });
+            i++;
+            x.setMap(map);
+          
+        @endforeach
    @foreach($locations as $location)
     var contentString = '<div id="content">'+
             '<div id="siteNotice">'+

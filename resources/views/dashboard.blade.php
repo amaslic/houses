@@ -177,6 +177,38 @@
                                     </div>
                                 </div><!-- End .panel --> 
                             </div>
+                            <div class="col-md-12 col-lg-12">
+                                <div class="panel panel-card recent-activites">
+                                    <!-- Start .panel -->
+                                    <div class="card-header" style="padding-bottom:20px;">
+                                       Report Per User
+                                       <div class="col-md-3 right">
+                                         <form class="form-horizontal" action="reportperuser " method="post">
+                                            {{ csrf_field() }}
+                                        <select class="form-control" name="peruser" onchange="this.form.submit(null)">
+                                            <option value="null">Select User:</option>
+                                            @foreach($users as $user)
+                                   
+                                            <option value="{{$user->id}}">{{$user->name}}</option>
+                                            @endforeach
+                                        </select>
+                                        </form>
+                                       </div>
+                                       
+                                    </div>
+                                    <div class="card-block text-xs-center">
+                                      <h3>{{$perusername}}</h3>
+                                      <hr style="border-top:1px solid #4c4c4c;">
+                                        <p class="reportfont">Sales Today: <b>{{$salestodayperuser}}</b></p>
+                                        <p class="reportfont">Sales Last Week: <b>{{$saleslastweekperuser}}</b></p>
+                                         <p class="reportfont">Sales Last Month: <b>{{$saleslastmonthperuser}}</b></p>
+                                          <p class="reportfont">Sales Last year: <b>{{$saleslastyearperuser}}</b></p>
+                                           <p class="reportfont">Total: <b>{{$totalsalesperuser}}</b></p>
+                                       
+                                    </div>
+                                    
+                                </div><!-- End .panel --> 
+                            </div>
                 </div>
   </div>   
 </div>
