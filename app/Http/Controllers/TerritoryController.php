@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Auth;
 use App\User;
 use App\Territory;
+use App\Marker;
 
 class TerritoryController extends Controller
 {
@@ -23,10 +24,11 @@ class TerritoryController extends Controller
 
     public function userslist(){
         if(Auth::user()->isAdmin()){
-            $users = User::get();
-            $territory = Territory::get();
-         
+            
            
+            $territory = Territory::get();
+            $users = User::where('id', 'user_id')->get();
+            
         
             return view ('addteritory', compact('users', 'territory'));
         }else {
@@ -38,8 +40,9 @@ class TerritoryController extends Controller
         if(Auth::user()->isAdmin()){
             $users = User::find($id);
             $territory = Territory::where('user_id', $id)->get();
-            
-            return view ('viewusermap', compact('users', 'territory'));
+            $locations = Marker::where('user_id', $id)->get();
+
+            return view ('viewusermap', compact('users', 'territory', 'locations'));
         }else {
             return back();
         }

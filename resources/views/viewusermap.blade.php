@@ -86,7 +86,7 @@
                 });
 
             google.maps.event.addListener(x, 'click', function(event) {
-                var contentString = "{{$t->description}}";
+                var contentString = "{{$t->description}} {{$users->name}}";
                 infowindow.setContent(contentString);
                 infowindow.setPosition(event.latLng);
                 infowindow.open(map);
@@ -94,14 +94,52 @@
             i++;
             x.setMap(map);
           
-        @endforeach
-
-      
-        
+        @endforeach 
 
       }
 
- 
+        @foreach($locations as $location)
+    var contentString = '<div id="content">'+
+            '<div id="siteNotice">'+
+            '</div>'+
+            '<h3 id="firstHeading" class="firstHeading">{{$location->status}}</h3>'+
+            '<div id="bodyContent">'+
+            '<p><b>Full Name:</b> {{$location->fullname}} </p>' +
+            '<p><b>Email:</b>{{$location->email}} </p> '+
+            '<p><b>Phone Number:</b>{{$location->phonenumber}} </p> '+
+            '<p><b>Date and Time:</b> </br>{{$location->created_at}} </p> '+
+            '<p><b>Comment: </b>{{$location->notes}} </p> '+
+            '</div>'+
+            '</div>';
+   var infowindow{{$location->id}} = new google.maps.InfoWindow({
+          content: contentString
+        });
+     var location = new google.maps.LatLng{{$location->latlng}};
+    
+           var marker{{$location->id}} = new google.maps.Marker({
+             position: location,
+             {{--  label: '{{$location->status}}',  --}}
+              map: map,
+              icon: '/images/{{$location->icon}}',
+              infowindow: infowindow{{$location->id}}
+   });
+  
+
+        
+   marker{{$location->id}}.setMap(map);
+    
+      marker{{$location->id}}.addListener('click', function() {
+          infowindow{{$location->id}}.open(map, marker{{$location->id}});
+        });
+       
+
+    
+     document.getElementById("latlng").value= marker.getPosition();
+         
+        
+   @endforeach
+
+
     });
 </script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC2_-ZK1vYH7btuM7Qoz5anEajPXI5YtiM&libraries=drawing&callback=initMap"
