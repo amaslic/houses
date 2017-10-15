@@ -37,3 +37,37 @@
     overflow-y: auto!important;
     top: -164px;
 }
+
+.dd .ddTitle{
+    background: transparent!important;
+    border: 1px solid #3d404c!important;
+}
+.dd .divider{
+    border-right: none!important;
+    border-left: 1px solid #3d404c!important;
+}
+.borderRadiusTp{
+    border-radius: 0!important;
+}
+.dd .ddArrow{
+    width: 16px;
+    height: 16px;
+    margin-top: -15px!important;
+    background: none!important;
+}
+.dd .ddArrow:before{
+    /* font-family: FontAwesome; */
+    content: "\f077";
+    font: normal normal normal 14px/1 FontAwesome;
+    
+    display: inline-block;
+    padding-right: 3px;
+    vertical-align: middle!important;
+    font-size: 15px;
+    color: #fff;
+}
+.dd .ddChild li{
+    padding: 5px;
+    background-color: #3d404c!important;
+    border-bottom: 1px solid #c3c3c3;
+}
