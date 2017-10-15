@@ -69,7 +69,7 @@
                         <div class="card-header card_header">
                             <p><i class="fa fa-folder-open-o" aria-hidden="true"></i> Add Status</p>
                             
-                            <a class="btn btn-success btn-clickable right" href="#">
+                            <a class="btn btn-success btn-clickable right" >
                                 <i class="fa fa-chevron-down"></i> 
                             </a>
                         </div>
