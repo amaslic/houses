@@ -72,14 +72,14 @@ class HomeController extends Controller
               
 
          return view('dashboard',compact('todaysalescount','lastweeksalescount','lastweeksalessum','lastmonthsalescount'
-         ,'lastmonthsalessum','lastyearsalescount','lastyearsalessum','todaysalessum','totalsalescount',
-        'totalsalessum','users','perusername','salestodayperuser','saleslastweekperuser','saleslastmonthperuser',
-        'saleslastyearperuser','totalsalesperuser'));
+            ,'lastmonthsalessum','lastyearsalescount','lastyearsalessum','todaysalessum','totalsalescount',
+            'totalsalessum','users','perusername','salestodayperuser','saleslastweekperuser','saleslastmonthperuser',
+            'saleslastyearperuser','totalsalesperuser'));
         }
                else{
-                     $locations = Marker::where('user_id', Auth::id())->get();
+                    $locations = Marker::where('user_id', Auth::id())->get();
                     $pins = Pin::get();
-                     $territory = Territory::get();
+                    $territory = Territory::where('user_id', Auth::id())->get();
                    
                     return view('home', compact('locations','pins','territory'));
                
@@ -114,13 +114,7 @@ class HomeController extends Controller
     }
     }
 
-    /*public function addteritory(){
-    if(Auth::user()->isAdmin()){
-        return view ('addteritory');
-    }else {
-        return back();
-    }
-    }*/
+   
 
     public function viewmap(){
     if(Auth::user()->isAdmin()){

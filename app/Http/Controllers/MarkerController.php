@@ -12,12 +12,7 @@ class MarkerController extends Controller
 {
 
     public function addmarker(){
-    //      $this->validate(request(), [
-    //     // 'user_id' => 'required|max:255',
-    //     'latlng' => 'required',
-    //     'status' =>  'required|max:255',
-
-    // ]);
+   
    $status = request('marker');
    $icon = Pin::where('name', $status)->select('color')->first();
    $icon = $icon->color.'.png';

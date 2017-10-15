@@ -48,9 +48,6 @@
                 infowindow.close();
             });
 
-           
-                
-
                 var x = new google.maps.Polygon({
                     path: z[i],
                     strokeColor: '#'+'{{$t->color}}',
@@ -59,7 +56,6 @@
                     fillColor: '#'+'{{$t->color}}',
                     fillOpacity: 0.35,
                    // infowindow: contentString,
-
                     clickable: false,
                     editable: false
                 });
@@ -74,8 +70,8 @@
             x.setMap(map);
           
         @endforeach
-   @foreach($locations as $location)
-    var contentString = '<div id="content">'+
+      @foreach($locations as $location)
+      var contentString = '<div id="content">'+
             '<div id="siteNotice">'+
             '</div>'+
             '<h3 id="firstHeading" class="firstHeading">{{$location->status}}</h3>'+
@@ -90,14 +86,14 @@
 
             '</div>'+
             '</div>';
-   var infowindow{{$location->id}} = new google.maps.InfoWindow({
+    var infowindow{{$location->id}} = new google.maps.InfoWindow({
           content: contentString
         });
-     var location = new google.maps.LatLng{{$location->latlng}};
+    var location = new google.maps.LatLng{{$location->latlng}};
     
            var marker{{$location->id}} = new google.maps.Marker({
              position: location,
-             {{--  label: '{{$location->status}}',  --}}
+            
               map: map,
               icon: '/images/{{$location->icon}}',
               infowindow: infowindow{{$location->id}}
@@ -125,13 +121,11 @@
    
    // Adds a marker to the map.
    function addMarker(location, map) {
-     // Add the marker at the clicked location, and add the next-available label
-     // from the array of alphabetical characters.
-      {{--  document.getElementById("markers").style.display = "block";  --}}
+     
+     
       document.getElementById("modal").click();
-     var marker = new google.maps.Marker({
+      var marker = new google.maps.Marker({
        position: location,
-       {{--  label: labels[labelIndex++ % labels.length],  --}}
        map: map
    
      });
