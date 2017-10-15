@@ -78,7 +78,7 @@
                         <div class="row">
                             <form class="form-inline ml" method="POST" action="/addpin">
                                 {{ csrf_field() }}
-                                <div  class="dropdown pp pl pr form-group{{ $errors->has('color') ? ' has-error' : '' }}">
+                                <div  class="dropdowncolor pp pl pr form-group{{ $errors->has('color') ? ' has-error' : '' }}">
                                     {{--  <label for="color" class="sr-only control-label"></label>  --}}
                                     <select name="color" id="color">
                                         <option value="red" data-image="images/pins/red.png"></option>

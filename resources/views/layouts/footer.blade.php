@@ -16,8 +16,8 @@
   <script src="{{ asset('js/custom_style.js') }}"></script>
   <script src="{{ asset('js/jscolor.min.js') }}"></script>
   <script src="{{ asset('js/ddslick.js') }}"></script>
-  <script src="js/msdropdown/jquery.dd.js" type="text/javascript"></script>
-  <script src="js/msdropdown/jquery.dd.min.js" type="text/javascript"></script>
+  <script src="/js/msdropdown/jquery.dd.js" type="text/javascript"></script>
+  <script src="/js/msdropdown/jquery.dd.min.js" type="text/javascript"></script>
   
   
 </body>
