@@ -24,6 +24,7 @@ Route::get('logout', 'HomeController@logout');
 Route::get('userlist', 'HomeController@userlist');
 Route::get('pins', 'HomeController@pins');
 Route::post('addpin', 'PinController@addPin');
+Route::get('deletepinstatus/{id}', 'PinController@deletePin');
 Route::get('pins', 'PinController@getPin');
 Route::get('addteritory', 'TerritoryController@userslist');
 Route::post('createTerritory', 'TerritoryController@createTerritory');

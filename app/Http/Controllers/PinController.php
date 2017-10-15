@@ -33,4 +33,10 @@ class PinController extends Controller
         $pin = Pin::get();
         return view ('pins', compact('pin'));
     }
+    public function deletePin($id)
+    {
+        $pin = Pin::find($id);
+        $pin->delete();
+        return redirect('pins');
+    }
 }

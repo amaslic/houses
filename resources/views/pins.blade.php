@@ -48,6 +48,7 @@
                                         <td><img src="images/pins/{{$pi->color}}.png"></td>
                                         <td>{{$pi->name}}</td>
                                         <td>{{$pi->group}}</td>
+                                        <td><a href="/deletepinstatus/{{$pi->id}}"><button class="btn btn-primary">Delete</button></a></td>
                                     </tr>
                                     @endforeach
                                 </tbody>
