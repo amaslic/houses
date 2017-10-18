@@ -1,3 +1,6 @@
+/* .text_center{
+    text-align: center;
+} */
 .cw{
     color:#fff;
 }
@@ -9,14 +12,14 @@
     padding-left: 45px;
 }
 .pr{
-    padding-right: 40px;
+    padding-right: 25px;
 }
 .dropdowncolor{
     position: relative;
     display: inline-block;
     margin-top: -41px;
-    margin-left: 10px;
-    margin-right: 50px;
+    margin-left: 85px;
+    margin-right: 70px;
 }
 .ddcommon ul{
     padding: 0;
@@ -35,7 +38,10 @@
     visibility: visible;
     height: 150px!important;
     overflow-y: auto!important;
-    top: -164px;
+    top: -145px!important;
+}
+.ddChild.ddchild_.border.shadow{
+    left: 10px!important;
 }
 
 .dd .ddTitle{
@@ -56,7 +62,6 @@
     background: none!important;
 }
 .dd .ddArrow:before{
-    /* font-family: FontAwesome; */
     content: "\f077";
     font: normal normal normal 14px/1 FontAwesome;
     

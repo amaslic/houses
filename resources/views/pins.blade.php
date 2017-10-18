@@ -10,49 +10,45 @@
                         Status List
                     </div>
                     <div class="card-block text-xs-center">
-                        <div class="table-responsive table-commerce">
+                        <div class="table-responsive table-commerce ">
                             <div id="basic-datatables_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4 no-footer">
-                            <div class="row">
-                                <div class="col-md-6 col-xs-12 ">
-                                    <div class="dataTables_length" id="basic-datatables_length"><label></label></div>
-                                </div>
-                                <div class="col-md-6 col-xs-12">
-                                    <div id="basic-datatables_filter" class="dataTables_filter"></div>
-                                </div>
-                            </div><!--row-->
-                            <table id="basic-datatables" class="table table-striped table-hover dataTable no-footer" role="grid" aria-describedby="basic-datatables_info">
-                                    <thead>
-                                        <tr role="row">
-                                            {{--  <th class="w80 sorting_asc" tabindex="0" aria-controls="basic-datatables" rowspan="1" colspan="1" aria-sort="ascending" 
-                                            style="width: 56px;">
-                                            <strong>ID</strong>
-                                            </th>  --}}
-                                            <th class="sorting" tabindex="0" aria-controls="basic-datatables" rowspan="1" colspan="1" aria-label="
-                                            " style="width: 146px;">
-                                            <strong>Status Color</strong>
-                                            </th>
-                                            <th class="sorting" tabindex="0" aria-controls="basic-datatables" rowspan="1" colspan="1" aria-label="
-                                            " style="width: 146px;">
-                                            <strong>Status Name</strong>
-                                            </th>
-                                            <th class="sorting" tabindex="0" aria-controls="basic-datatables" rowspan="1" colspan="1" aria-label="
-                                            " style="width: 173px;">
-                                            <strong>KPI Group</strong>
-                                            </th>
+                                <div class="row">
+                                    <div class="col-md-6 col-xs-12 ">
+                                        <div class="dataTables_length" id="basic-datatables_length"><label></label></div>
+                                    </div>
+                                    <div class="col-md-6 col-xs-12">
+                                        <div id="basic-datatables_filter" class="dataTables_filter"></div>
+                                    </div>
+                                </div><!--row-->
+                                <table id="basic-datatables" class="table table-striped table-hover dataTable no-footer" role="grid" aria-describedby="basic-datatables_info">
+                                        
+                                        <thead>
+                                            <tr role="row">
+                                                <th class="sorting text_center" tabindex="0" aria-controls="basic-datatables" rowspan="1" colspan="1" aria-label="
+                                                " style="width: 146px;padding-left:40px">
+                                                <strong>Status Color</strong>
+                                                </th>
+                                                <th class="sorting text_center" tabindex="0" aria-controls="basic-datatables" rowspan="1" colspan="1" aria-label="
+                                                " style="width: 146px;padding-left:40px;">
+                                                <strong>Status Name</strong>
+                                                </th>
+                                                <th class="sorting text_center" tabindex="0" aria-controls="basic-datatables" rowspan="1" colspan="1" aria-label="
+                                                " style="width: 173px;padding-left:55px;">
+                                                <strong>KPI Group</strong>
+                                                </th>
+                                            </tr>
+                                        </thead>
+                                    <tbody style="text-align:center;">
+                                        @foreach($pin as $pi)
+                                        <tr role="row" class="odd">
+                                            <td><img src="images/pins/{{$pi->color}}.png"></td>
+                                            <td>{{$pi->name}}</td>
+                                            <td>{{$pi->group}}</td>
+                                            <td><a href="/deletepinstatus/{{$pi->id}}"><button class="btn btn-primary">Delete</button></a></td>
                                         </tr>
-                                    </thead>
-                                <tbody>
-                                    @foreach($pin as $pi)
-                                    <tr role="row" class="odd">
-                                        {{--  <td class="sorting_1">{{$pi->id}}</td>  --}}
-                                        <td><img src="images/pins/{{$pi->color}}.png"></td>
-                                        <td>{{$pi->name}}</td>
-                                        <td>{{$pi->group}}</td>
-                                        <td><a href="/deletepinstatus/{{$pi->id}}"><button class="btn btn-primary">Delete</button></a></td>
-                                    </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
+                                        @endforeach
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>
@@ -61,7 +57,6 @@
             </div>
         </div><!--row registerform-->
     </div><!--container-->
-
         <!--ADD STATUS FORM-->
         <div class="container" style="padding:0;">
             <div class="col-md-12">
@@ -77,10 +72,10 @@
                     </div>
                     <div class="panel_body">
                         <div class="row">
+                        
                             <form class="form-inline ml" method="POST" action="/addpin">
                                 {{ csrf_field() }}
-                                <div  class="dropdowncolor pp pl pr form-group{{ $errors->has('color') ? ' has-error' : '' }}">
-                                    {{--  <label for="color" class="sr-only control-label"></label>  --}}
+                                <div  class="dropdowncolor pp form-group{{ $errors->has('color') ? ' has-error' : '' }}">
                                     <select name="color" id="color">
                                         <option value="red" data-image="images/pins/red.png"></option>
                                         <option value="blue" data-image="images/pins/blue.png"></option>
