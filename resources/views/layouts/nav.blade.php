@@ -12,7 +12,7 @@
 
                     <div class="page-logo">
 
-                        <a href="home"><img src="{{asset ('images/logo.png')}}" alt="absolute admin" class="img-fluid logo-default"/> </a>
+                        <a href="{!! url('home'); !!}"><!--<img src="{{asset ('images/logo.png')}}" alt="absolute admin" class="img-fluid logo-default"/> --><h2 style="color: white; font-weight: 600">Roofbuilders</h2> </a>
 
                     </div>
 
@@ -180,7 +180,7 @@
 
                                 <li class="dropdown dropdown-extended dropdown-notification" id="header_notification_bar">
 
-                                <a href="pins" class="dropdown-toggle"  data-close-others="true">
+                                <a href="{!! url('pins'); !!}" class="dropdown-toggle"  data-close-others="true">
 
                                     <i class="fa fa-map-marker"></i>
 
