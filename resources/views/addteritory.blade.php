@@ -24,8 +24,10 @@
 </style>
 
 <div class="container-main">
-    
-    <div id="map"></div>
+    <input id="searchInput" class="controls" type="text" placeholder="Enter a location">
+<div id="map"></div>
+
+  
 
     <button type="button" id="modal" class="btn btn-secondary" style="display:none;" data-toggle="modal" data-target="#myModal"> Launch demo modal</button>
     <div  class="modal fade" name="markers" id="myModal" tabindex="-1" role="dialog" aria-hidden="true" style="display: none;">
@@ -102,6 +104,8 @@
        
 
         initMap = function () {
+         
+            
         var map = new google.maps.Map(document.getElementById('map'), {
           center: {lat: -34.397, lng: 150.644},
           zoom: 8,
@@ -179,7 +183,10 @@
                 });
 
             google.maps.event.addListener(x, 'click', function(event) {
-                var contentString = "{{$t->description}}";
+                var contentString = "{{$t->description}} <br>";
+                contentString += 
+                                        "<a href='{{ URL::to('deactivateTerritory/'.$t->id) }}'>Deactivate</a> <a href='{{ URL::to('activateTerritory/'.$t->id) }}'>Activate</a>" 
+                     
                 infowindow.setContent(contentString);
                 infowindow.setPosition(event.latLng);
                 infowindow.open(map);
@@ -205,11 +212,19 @@
         
 
       }
+
+      var input = document.getElementById('searchInput');
+    map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+
+    var autocomplete = new google.maps.places.Autocomplete(input);
+    autocomplete.bindTo('bounds', map);
+
+
   initMap();
     });
          
 </script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC2_-ZK1vYH7btuM7Qoz5anEajPXI5YtiM&libraries=drawing&callback=initMap"
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC2_-ZK1vYH7btuM7Qoz5anEajPXI5YtiM&libraries=drawing,places&callback=initMap"
          async defer></script>
 
 

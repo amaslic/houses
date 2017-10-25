@@ -79,7 +79,7 @@ class HomeController extends Controller
                else{
                     $locations = Marker::where('user_id', Auth::id())->get();
                     $pins = Pin::get();
-                    $territory = Territory::where('user_id', Auth::id())->get();
+                    $territory = Territory::where('user_id', Auth::id())->where('active', 1)->get();
                    
                     return view('home', compact('locations','pins','territory'));
                

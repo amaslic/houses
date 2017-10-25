@@ -46,4 +46,46 @@ class TerritoryController extends Controller
             return back();
         }
     }
+
+    public function activeTerritory(){
+        if(Auth::user()->isAdmin()){
+      
+            $territory = Territory::where('active', '1')->get();
+            $locations = Marker::get();
+
+            return view ('viewmap', compact('territory', 'locations'));
+        }else {
+            return back();
+        }
+    }
+
+    public function deactivateTerritory($id){
+        if(Auth::user()->isAdmin()){
+      
+            $territory = Territory::find($id);
+            $territory->active = 0;
+            $territory->save();
+
+            return redirect('/addteritory');
+            
+        }else {
+            return back();
+        }
+    }
+
+    public function activateTerritory($id){
+        if(Auth::user()->isAdmin()){
+      
+            $territory = Territory::find($id);
+            $territory->active = 1;
+            $territory->save();
+
+            return redirect('/addteritory');
+            
+        }else {
+            return back();
+        }
+    }
+
+    
 }

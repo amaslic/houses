@@ -38,3 +38,6 @@ Route::get('makesale/{id}', 'SaleController@makesale');
 Route::post('submitsale/{id}', 'SaleController@submitsale');
 Route::get('deletepin/{id}','MarkerController@deletemarker');
 Route::post('reportperuser','HomeController@index');
+Route::get('viewmap', 'TerritoryController@activeTerritory');
+Route::get('deactivateTerritory/{id}', 'TerritoryController@deactivateTerritory');
+Route::get('activateTerritory/{id}', 'TerritoryController@activateTerritory');
