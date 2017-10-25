@@ -21,73 +21,7 @@
         min-height: 884px;
         height: 100%;
     }
-    #description {
-        font-family: Roboto;
-        font-size: 15px;
-        font-weight: 300;
-      }
-
-      #infowindow-content .title {
-        font-weight: bold;
-      }
-
-      #infowindow-content {
-        display: none;
-      }
-
-      #map #infowindow-content {
-        display: inline;
-      }
-
-      .pac-card {
-        margin: 10px 10px 0 0;
-        border-radius: 2px 0 0 2px;
-        box-sizing: border-box;
-        -moz-box-sizing: border-box;
-        outline: none;
-        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
-        background-color: #fff;
-        font-family: Roboto;
-      }
-
-      #pac-container {
-        padding-bottom: 12px;
-        margin-right: 12px;
-      }
-
-      .pac-controls {
-        display: inline-block;
-        padding: 5px 11px;
-      }
-
-      .pac-controls label {
-        font-family: Roboto;
-        font-size: 13px;
-        font-weight: 300;
-      }
-
-      #pac-input {
-        background-color: #fff;
-        font-family: Roboto;
-        font-size: 15px;
-        font-weight: 300;
-        margin-left: 12px;
-        padding: 0 11px 0 13px;
-        text-overflow: ellipsis;
-        width: 400px;
-      }
-
-      #pac-input:focus {
-        border-color: #4d90fe;
-      }
-
-      #title {
-        color: #fff;
-        background-color: #4d90fe;
-        font-size: 25px;
-        font-weight: 500;
-        padding: 6px 12px;
-      }
+   
 </style>
 
 <div class="container-main">
@@ -140,7 +74,7 @@
                   <form class="form-horizontal" method="POST" id="addTerritory" action="createTerritory">
                      {{ csrf_field() }}
                      <input type="hidden" name="ltdlng" id="ltdlng" />
-                     
+                     <input type="hidden" value="1" name="active" id="active">
                      <fieldset>
                         <!-- Form Name -->
                         <!-- Text input-->
@@ -176,6 +110,7 @@
                         </div>
                         <div class="form-group">
                            <div class="col-md-12">
+                             
                               <button type="submit" class="btn btn-warning pull-right">Add territory <span class="glyphicon glyphicon-send"></span></button>
                            </div>
                         </div>
@@ -379,11 +314,7 @@
 
       }
 
-      var input = document.getElementById('searchInput');
-    map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
 
-    var autocomplete = new google.maps.places.Autocomplete(input);
-    autocomplete.bindTo('bounds', map);
 
 
   initMap();
