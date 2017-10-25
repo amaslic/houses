@@ -1,6 +1,3 @@
-/* .text_center{
-    text-align: center;
-} */
 .cw{
     color:#fff;
 }
@@ -78,4 +75,7 @@
 }
 .fa{
     color: #fff!important;
+}
+.borderRadiusTp .border, .borderRadius .border{
+    border-radius: 5px!important;
 }

@@ -24,7 +24,7 @@
 
         <!-- CORE CSS -->
 
-         <link href="{{ asset('plugins/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css" />
+        <link href="{{ asset('plugins/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css" />
 
         <link href="{{ asset('plugins/metis-menu/metisMenu.min.css')}}" rel="stylesheet" type="text/css" />
         <link href="{{ asset('plugins/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet" type="text/css" />
@@ -33,23 +33,11 @@
         <link href="{{ asset('plugins/c3/c3.min.css')}}" rel="stylesheet" type="text/css" />
         <link href="{{ asset('plugins/widget/widget.css')}}" rel="stylesheet" type="text/css" />
         <link href="{{ asset('plugins/calendar/fullcalendar.min.css')}}" rel="stylesheet" type="text/css" />
-         <link href="{{ asset('plugins/ui/jquery-ui.css')}}" rel="stylesheet" type="text/css" />
-
-       
-       
-
-       
-
-        
-
-       
+        <link href="{{ asset('plugins/ui/jquery-ui.css')}}" rel="stylesheet" type="text/css" />
 
 
-         <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-
-    <script type="text/javascript" src="https://cdn.rawgit.com/prashantchaudhary/ddslick/master/jquery.ddslick.min.js" ></script>
-
-
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+        <script type="text/javascript" src="https://cdn.rawgit.com/prashantchaudhary/ddslick/master/jquery.ddslick.min.js" ></script>
 
         <!-- THEME CSS -->
         <link href="{{ asset('css/style.css')}}" rel="stylesheet" type="text/css" />
@@ -57,14 +45,6 @@
          <link href="{{ asset('css/zoranstyle.css')}}" rel="stylesheet" type="text/css" />
          <link href="{{ asset('css/theme/dark.css')}}" rel="stylesheet" type="text/css" />
          <link href="{{ asset('css/msdropdown/dd.css')}}" rel="stylesheet" type="text/css" />
-        
-
-         
-
-    
-
-
-
         
 
         <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
