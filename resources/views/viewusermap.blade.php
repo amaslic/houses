@@ -72,10 +72,22 @@
 
            
                 
-
+            if("{{$t->active}}" == 1)
                 var x = new google.maps.Polygon({
                     path: z[i],
-                    strokeColor: '#'+'{{$t->color}}',
+                    strokeColor: '#98fb98',
+                    strokeOpacity: 0.8,
+                    strokeWeight: 2,
+                    fillColor: '#'+'{{$t->color}}',
+                    fillOpacity: 0.35,
+                   // infowindow: contentString,
+                    clickable: true,
+                    editable: false
+                });
+            else
+                 var x = new google.maps.Polygon({
+                    path: z[i],
+                    strokeColor: '#800000',
                     strokeOpacity: 0.8,
                     strokeWeight: 2,
                     fillColor: '#'+'{{$t->color}}',
@@ -86,7 +98,11 @@
                 });
 
             google.maps.event.addListener(x, 'click', function(event) {
-                var contentString = "{{$t->description}} {{$users->name}}";
+                var contentString = "{{$t->description}} <br>";
+                 if("{{$t->active}}" == 1)
+                  contentString += "<a href='{{ URL::to('deactivateTerritory/'.$t->id) }}'>Deactivate</a>";
+                else
+                  contentString += "<a href='{{ URL::to('activateTerritory/'.$t->id) }}'>Activate</a>";
                 infowindow.setContent(contentString);
                 infowindow.setPosition(event.latLng);
                 infowindow.open(map);

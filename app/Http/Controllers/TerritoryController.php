@@ -68,7 +68,7 @@ class TerritoryController extends Controller
             $territory->active = 0;
             $territory->save();
 
-            return redirect('/addteritory');
+            return back();
             
         }else {
             return back();
@@ -82,7 +82,7 @@ class TerritoryController extends Controller
             $territory->active = 1;
             $territory->save();
 
-            return redirect('/addteritory');
+            return back();
             
         }else {
             return back();

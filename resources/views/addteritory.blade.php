@@ -140,8 +140,8 @@
          
             
         var map = new google.maps.Map(document.getElementById('map'), {
-          center: {lat: -34.397, lng: 150.644},
-          zoom: 8,
+          center: {lat: 39.5, lng: -98.35},
+          zoom: 13,
      
         });
 
@@ -270,10 +270,22 @@
 
            
                 
-
+            if("{{$t->active}}" == 1)
                 var x = new google.maps.Polygon({
                     path: z[i],
-                    strokeColor: '#'+'{{$t->color}}',
+                    strokeColor: '#98fb98',
+                    strokeOpacity: 0.8,
+                    strokeWeight: 2,
+                    fillColor: '#'+'{{$t->color}}',
+                    fillOpacity: 0.35,
+                   // infowindow: contentString,
+                    clickable: true,
+                    editable: false
+                });
+            else
+                var x = new google.maps.Polygon({
+                    path: z[i],
+                    strokeColor: '#800000',
                     strokeOpacity: 0.8,
                     strokeWeight: 2,
                     fillColor: '#'+'{{$t->color}}',
@@ -286,14 +298,12 @@
             google.maps.event.addListener(x, 'click', function(event) {
                 var contentString = "{{$t->description}} <br>";
                // @activeTerr
-               
+                
               
-                 @if("{{$t->active}}" != 1)
-                  contentString += "Testisss";
-                @endif  
-                 @if("{{$t->active}}" === "1")
-                  contentString += "Testis";
-                @endif
+                 if("{{$t->active}}" == 1)
+                  contentString += "<a href='{{ URL::to('deactivateTerritory/'.$t->id) }}'>Deactivate</a>";
+                else
+                  contentString += "<a href='{{ URL::to('activateTerritory/'.$t->id) }}'>Activate</a>";
                 //@endactiveTerr
                 infowindow.setContent(contentString);
                 infowindow.setPosition(event.latLng);
