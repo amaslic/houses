@@ -100,7 +100,7 @@
 
                 var x = new google.maps.Polygon({
                     path: z[i],
-                    strokeColor: '#'+'{{$t->color}}',
+                    strokeColor: "#98fb98",
                     strokeOpacity: 0.8,
                     strokeWeight: 2,
                     fillColor: '#'+'{{$t->color}}',
@@ -121,6 +121,34 @@
           
         @endforeach  
 
+        @foreach($locations as $location)
+
+            var marker = new google.maps.Marker({
+                position:  new google.maps.LatLng{{$location->latlng}},
+                map: map,
+                icon: '/images/{{$location->icon}}',
+               
+            });
+
+            google.maps.event.addListener(marker, 'click', function(event) {
+                var contentString = '<div id="content">'+
+                '<div id="siteNotice">'+
+                '</div>'+
+                '<h3 id="firstHeading" class="firstHeading">{{$location->status}}</h3>'+
+                '<div id="bodyContent">'+
+                '<p><b>Full Name:</b> {{$location->fullname}} </p>' +
+                '<p><b>Email:</b>{{$location->email}} </p> '+
+                '<p><b>Phone Number:</b>{{$location->phonenumber}} </p> '+
+                '<p><b>Date and Time:</b> </br>{{$location->created_at}} </p> '+
+                '<p><b>Comment: </b>{{$location->notes}} </p> '+
+                '</div>'+
+                '</div>';
+                infowindow.setContent(contentString);
+                infowindow.setPosition(event.latLng);
+                infowindow.open(map);
+            });
+
+        @endforeach
 
 
         

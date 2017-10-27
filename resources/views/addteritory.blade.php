@@ -140,7 +140,7 @@
                   <form class="form-horizontal" method="POST" id="addTerritory" action="createTerritory">
                      {{ csrf_field() }}
                      <input type="hidden" name="ltdlng" id="ltdlng" />
-                     
+                     <input type="hidden" value="1" name="active" id="active">
                      <fieldset>
                         <!-- Form Name -->
                         <!-- Text input-->
@@ -176,6 +176,7 @@
                         </div>
                         <div class="form-group">
                            <div class="col-md-12">
+                             
                               <button type="submit" class="btn btn-warning pull-right">Add territory <span class="glyphicon glyphicon-send"></span></button>
                            </div>
                         </div>
@@ -350,9 +351,16 @@
 
             google.maps.event.addListener(x, 'click', function(event) {
                 var contentString = "{{$t->description}} <br>";
-                contentString += 
-                                        "<a href='{{ URL::to('deactivateTerritory/'.$t->id) }}'>Deactivate</a> <a href='{{ URL::to('activateTerritory/'.$t->id) }}'>Activate</a>" 
-                     
+               // @activeTerr
+               
+              
+                 @if("{{$t->active}}" != 1)
+                  contentString += "Testisss";
+                @endif  
+                 @if("{{$t->active}}" === "1")
+                  contentString += "Testis";
+                @endif
+                //@endactiveTerr
                 infowindow.setContent(contentString);
                 infowindow.setPosition(event.latLng);
                 infowindow.open(map);
@@ -379,11 +387,7 @@
 
       }
 
-      var input = document.getElementById('searchInput');
-    map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
 
-    var autocomplete = new google.maps.places.Autocomplete(input);
-    autocomplete.bindTo('bounds', map);
 
 
   initMap();

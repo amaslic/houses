@@ -14,10 +14,12 @@ class TerritoryController extends Controller
    
     public function createTerritory(){
         $territory = Territory::create([
+            'active' => request('active'),
             'user_id' => request('user_id'),
             'ltdlng' => request('ltdlng'),
             'color' => request('color'),
             'description' => request('description'),
+            
         ]);
         return back();
     }
