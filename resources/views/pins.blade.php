@@ -73,7 +73,7 @@
                     <div class="panel_body">
                         <div class="row">
                         
-                            <form class="form-inline ml" method="POST" action="/addpin">
+                            <form class="form-inline ml" method="POST" action="addpin">
                                 {{ csrf_field() }}
                                 <div  class="dropdowncolor pp form-group{{ $errors->has('color') ? ' has-error' : '' }}">
                                     <select name="color" id="color">
