@@ -145,6 +145,8 @@
      
         });
 
+        
+
         var card = document.getElementById('pac-card');
         var input = document.getElementById('pac-input');
         var types = document.getElementById('type-selector');
@@ -256,9 +258,9 @@
 
              z.push(JSON.parse('['+y+']'));
 
-           // console.log(z);
+           // console.log(z[i][0]);
 
-     
+             
 
             var infowindow = new google.maps.InfoWindow({
                 size: new google.maps.Size(150, 50)
@@ -268,10 +270,12 @@
                 infowindow.close();
             });
 
-           
-                
+            var o = GetAddress(z[i][0]);
+
+
             if("{{$t->active}}" == 1)
                 var x = new google.maps.Polygon({
+                   
                     path: z[i],
                     strokeColor: '#98fb98',
                     strokeOpacity: 0.8,
@@ -294,7 +298,7 @@
                     clickable: true,
                     editable: false
                 });
-
+        
             google.maps.event.addListener(x, 'click', function(event) {
                 var contentString = "{{$t->description}} <br>";
                // @activeTerr
@@ -309,9 +313,12 @@
                 infowindow.setPosition(event.latLng);
                 infowindow.open(map);
             });
+
+            
+
             i++;
             x.setMap(map);
-          
+           
         @endforeach  
 
         google.maps.event.addListener(drawingManager, 'polygoncomplete', function(polygon) {
@@ -321,25 +328,78 @@
             lineCoords.push( arr  );
             drawingManager.setOptions({fillColor: "black"});
             $( "#ltdlng" ).val( lineCoords );
-
+           
            // alert($( "#ltdlng" ).val() + " " + color);
            // $( "#addTerritory" ).submit();
            document.getElementById("modal").click();
+      
         });
 
-        
-
+         
+           
       }
 
+      function getAdd() {
 
+                var latLng = $( "#ltdlng" ).val();
+                var  b = latLng;
+                var y = b.replace(/&quot;/g, '\"');
+                    // console.log(y);
+          
+                var ltd = y.split('t').pop().split(',').shift();
+                var ldt = ltd.substring(2 ,50);
+                var lng = y.split(':').pop().split('}').shift();
 
+              
+
+                var l =  parseFloat(ldt);
+                var z =  parseFloat(lng);
+
+                alert(l);
+                alert(z);
+
+                var latlng = new google.maps.LatLng(l, z);
+
+                console.log(latLng);
+                var geocoder = geocoder = new google.maps.Geocoder();
+                geocoder.geocode({ 'latLng': latLng }, function (results, status) {
+                    if (status == google.maps.GeocoderStatus.OK) {
+                        if (results[1]) {
+                            console.log("Location: " + results[1].formatted_address);
+                        }
+                    }
+                });
+            }
+
+        function GetAddress(latLng) {
+                 var address;
+               /* var lat = parseFloat(document.getElementById("txtLatitude").value);
+                var lng = parseFloat(document.getElementById("txtLongitude").value);
+                var latlng = new google.maps.LatLng(lat, lng);*/
+                var geocoder = geocoder = new google.maps.Geocoder();
+                geocoder.geocode({ 'latLng': latLng }, function (results, status) {
+                    if (status == google.maps.GeocoderStatus.OK) {
+                        if (results[1]) {
+                            console.log(results[1].formatted_address);
+                        }
+                    }
+                }); 
+            }
+     
+        $('#myModal').on('show.bs.modal', function (e) {
+            //console.log("modal");
+            getAdd();
+        });
 
   initMap();
     });
+
+
          
 </script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC2_-ZK1vYH7btuM7Qoz5anEajPXI5YtiM&libraries=drawing,places&callback=initMap"
          async defer></script>
+
 
 
          
