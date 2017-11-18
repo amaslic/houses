@@ -173,7 +173,7 @@
                 <div class="card-block text-xs-center">
                   <h3>{{$peruserhour2}}</h3>
                   <hr style="border-top:1px solid #4c4c4c;">
-                  <p>Markers : <b>{{$countmarkersperuser}}</b></p>
+                  <p class="reportfont">Markers : <b>{{$countmarkersperuser}}</b></p>
                  
                </div>
             </div>
