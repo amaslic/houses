@@ -123,6 +123,7 @@ class HomeController extends Controller
                     $saleslastyearperuser = '';
 
                     $totalsalesperuser = '';
+                      $userid = null;
 
                 }else {
 
@@ -137,9 +138,36 @@ class HomeController extends Controller
                     $totalsalesperuser = Sale::where('user_id',$peruser->id)->count();
 
                     $perusername=$peruser->name;
+                    $userid = $peruser->id;
 
                }
 
+                    $peruserhour = request('peruserhour');
+                    $peruserhours = User::find($peruserhour);
+                    if(empty($peruserhours)){
+                        $markersperhours = 'Please Select user';
+                        $countmarkersperuser = '';
+                        $peruserhour2='';
+                    }else{
+                        $date = request('date');
+                        $starttimereq = request('firsttime');
+                        $starttime= date("G:i", strtotime($starttimereq));
+                        $endtimereq = request('secondtime');
+                        $endtime= date("G:i", strtotime($endtimereq));
+                      
+                        $starttime2 = $date.' '. $starttime.':00';
+                        $endtime2 = $date.' '. $endtime.':00';
+                         $peruserhour2=$peruserhours->name;
+                          $peruserhour3=$peruserhours->id;
+                       // dd($starttime2.'||'.$endtime2);
+                        $markersperhours = Marker::where('user_id',$peruserhour3)->where('updated_at', '>=', $starttime2)->where('updated_at', '<=', $endtime2)->get();
+                        $countmarkersperuser = count($markersperhours);
+                       
+                    }
+                  
+
+
+                   
               
 
 
@@ -150,7 +178,7 @@ class HomeController extends Controller
 
             'totalsalessum','users','perusername','salestodayperuser','saleslastweekperuser','saleslastmonthperuser',
 
-            'saleslastyearperuser','totalsalesperuser'));
+            'saleslastyearperuser','totalsalesperuser','userid','markersperhours','countmarkersperuser','peruserhour2'));
 
         }
 

@@ -98,7 +98,7 @@
             </div>
             <!-- End .panel --> 
          </div>
-         <div class="col-md-12 col-lg-12">
+         <div class="col-md-6 col-lg-6">
             <div class="panel panel-card recent-activites">
                <!-- Start .panel -->
                <div class="card-header" style="padding-bottom:20px;">
@@ -106,8 +106,8 @@
                   <div class="col-md-3 right">
                      <form class="form-horizontal" action="reportperuser " method="post">
                         {{ csrf_field() }}
-                        <select class="form-control" name="peruser" onchange="this.form.submit(null)">
-                           <option value="null">Select User:</option>
+                        <select class="form-control" name="peruser" onchange="this.form.submit(null)" style="width:140px;">
+                           <option value="null">Select User</option>
                            @foreach($users as $user)
                            <option value="{{$user->id}}">{{$user->name}}</option>
                            @endforeach
@@ -127,6 +127,59 @@
             </div>
             <!-- End .panel --> 
          </div>
+
+            <div class="col-md-6 col-lg-6">
+            <div class="panel panel-card recent-activites">
+               <!-- Start .panel -->
+               <div class="card-header" style="padding-bottom:20px;">
+                  Report Per Hour
+                  <div class="col-md-3 right">
+                     <form class="form-inline" action="reportperhour " method="post">
+                        {{ csrf_field() }}
+                        <select class="form-control" name="peruserhour" onchange="" style="width:140px;">
+                           <option value="null">Select User</option>
+                           @foreach($users as $user)
+                           <option value="{{$user->id}}">{{$user->name}}</option>
+                           @endforeach
+                        </select>
+                    
+                  </div>
+               </div>
+               <div class="card-block text-xs-center">
+                Please select date and time range.
+                     <div class="form-inline">
+                        <div class="form-group">
+                            
+                            <input type="date" class="form-control" name="date" id="date">
+                        </div>
+                        <div class="form-group" style="margin-left:30px;margin-right:5px;">
+                        
+                            <input type="time" class="form-control"  name="firsttime" id="time" value="01:00">
+                        </div> - 
+                        <div class="form-group" style="margin-left:5px;" >
+                        
+                            <input type="time" class="form-control" name="secondtime"id="time"  value="23:59">
+                        </div>
+                        
+                        <div class="form-group" style="margin-left:30px;" >
+                        
+                        <button type="submit" class="btn btn-warning">Report</button>
+                        </div>
+                       </div> 
+                    </form>
+                    
+                  
+               </div>
+                <div class="card-block text-xs-center">
+                  <h3>{{$peruserhour2}}</h3>
+                  <hr style="border-top:1px solid #4c4c4c;">
+                  <p>Markers : <b>{{$countmarkersperuser}}</b></p>
+                 
+               </div>
+            </div>
+            <!-- End .panel --> 
+         </div>
+        
       </div>
    </div>
 </div>
