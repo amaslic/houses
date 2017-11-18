@@ -34,6 +34,7 @@
         <link href="{{ asset('plugins/widget/widget.css')}}" rel="stylesheet" type="text/css" />
         <link href="{{ asset('plugins/calendar/fullcalendar.min.css')}}" rel="stylesheet" type="text/css" />
          <link href="{{ asset('plugins/ui/jquery-ui.css')}}" rel="stylesheet" type="text/css" />
+         <link href="{{ asset('plugins/toastr/toastr.min.css')}}" rel="stylesheet" type="text/css" />
 
        
        

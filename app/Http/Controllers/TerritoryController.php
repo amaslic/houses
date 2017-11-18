@@ -8,18 +8,20 @@ use Auth;
 use App\User;
 use App\Territory;
 use App\Marker;
+use Illuminate\Support\Facades\Input;
 
 class TerritoryController extends Controller
 {
    
     public function createTerritory(){
         $territory = Territory::create([
-            'active' => request('active'),
             'user_id' => request('user_id'),
+            'username' => request('username'),
             'ltdlng' => request('ltdlng'),
             'color' => request('color'),
             'description' => request('description'),
-            
+            'active' => Input::get('active'),
+            'address' => Input::get('address'),
         ]);
         return back();
     }

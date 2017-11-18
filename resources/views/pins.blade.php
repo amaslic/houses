@@ -41,7 +41,7 @@
                                     <tbody style="text-align:center;">
                                         @foreach($pin as $pi)
                                         <tr role="row" class="odd">
-                                            <td><img src="images/pins/{{$pi->color}}.png"></td>
+                                            <td><img src="images/{{$pi->color}}.png"></td>
                                             <td>{{$pi->name}}</td>
                                             <td>{{$pi->group}}</td>
                                             <td><a href="/deletepinstatus/{{$pi->id}}"><button class="btn btn-primary">Delete</button></a></td>
@@ -77,16 +77,16 @@
                                 {{ csrf_field() }}
                                 <div  class="dropdowncolor pp form-group{{ $errors->has('color') ? ' has-error' : '' }}">
                                     <select name="color" id="color">
-                                        <option value="red" data-image="images/pins/red.png"></option>
-                                        <option value="blue" data-image="images/pins/blue.png"></option>
-                                        <option value="lightblue" data-image="images/pins/lightblue.png"></option>
-                                        <option value="green" data-image="images/pins/green.png"></option>
-                                        <option value="yellow" data-image="images/pins/yellow.png"></option>
-                                        <option value="orange" data-image="images/pins/orange.png"></option>
-                                        <option value="pink" data-image="images/pins/pink.png"></option>
-                                        <option value="violet" data-image="images/pins/violet.png"></option>
-                                        <option value="gray" data-image="images/pins/gray.png"></option>
-                                        <option value="brown" data-image="images/pins/brown.png"></option>
+                                        <option value="red" data-image="images/red.png"></option>
+                                        <option value="blue" data-image="images/blue.png"></option>
+                                        <option value="lightblue" data-image="images/lightblue.png"></option>
+                                        <option value="green" data-image="images/green.png"></option>
+                                        <option value="yellow" data-image="images/yellow.png"></option>
+                                        <option value="orange" data-image="images/orange.png"></option>
+                                        <option value="pink" data-image="images/pink.png"></option>
+                                        <option value="violet" data-image="images/violet.png"></option>
+                                        <option value="gray" data-image="images/gray.png"></option>
+                                        <option value="brown" data-image="images/brown.png"></option>
                                     </select>
                                 </div>
                                 <div class="pp pr form-group{{ $errors->has('name') ? ' has-error' : '' }}">

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Marker;
 use App\Pin;
+use App\Territory;
 
 use Auth;
 
@@ -18,7 +19,7 @@ class MarkerController extends Controller
    $icon = $icon->color.'.png';
     $marker= Marker::create([
         'user_id' => Auth::id(),
-        'latlng' => request('latlng'),
+        'latlng' => request('latlng2'),
         'status' => request('marker'),
         'fullname' => request('fullname'),
         'email' => request('email'),
@@ -35,7 +36,9 @@ class MarkerController extends Controller
     public function editpin( $id){
         $editpins = Marker::find($id);
         $pins = Pin::get();
-        return view('editpin',compact('editpins','pins'));
+        $goto = Territory::first();
+          $territory = Territory::where('user_id', Auth::id())->get();
+        return view('editpin',compact('editpins','pins','goto','territory'));
 
     }
     public function editmarker( $id){
@@ -58,4 +61,5 @@ class MarkerController extends Controller
         $marker->delete();
         return redirect('home');
     }
+   
 }

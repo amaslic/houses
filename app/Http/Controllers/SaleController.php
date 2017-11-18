@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Marker;
 use App\Sale;
 use App\Pin;
+use App\Territory;
 use Auth;
 class SaleController extends Controller
 {
@@ -13,7 +14,9 @@ class SaleController extends Controller
     public function makesale($id){
 
         $editpins = Marker::find($id);
-        return view('makesale', compact('editpins'));
+         $goto = Territory::first();
+          $territory = Territory::where('user_id', Auth::id())->get();
+        return view('makesale', compact('editpins','goto','territory'));
     }
     public function submitsale($id){
        $sale= Sale::create([

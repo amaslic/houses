@@ -3,7 +3,7 @@
     toastr.options = {
         "debug": false,
         "newestOnTop": false,
-        "positionClass": "toast-bottom-right",
+        "positionClass": "toast-top-right",
         "closeButton": true,
         "progressBar": true
     };
@@ -14,7 +14,7 @@
         toastr.success('Success - This is a success notification');
     });
     $('.homerDemo3').on('click', function (event) {
-        toastr.warning('Warning - This is a warning notification');
+        toastr.warning('Click on the map to create a marker!');
     });
     $('.homerDemo4').on('click', function (event) {
         toastr.error('Error - This is a error notification');

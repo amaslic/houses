@@ -1,0 +1,88 @@
+.cw{
+    color:#fff;
+}
+.mm{
+    margin-top: 20px;
+    margin-bottom: 0;
+}
+.pl{
+    padding-left: 45px;
+}
+.pr{
+    padding-right: 25px;
+}
+.dropdowncolor{
+    position: relative;
+    display: inline-block;
+    margin-top: -41px;
+    margin-left: 85px;
+    margin-right: 70px;
+}
+.ddcommon ul{
+    padding: 0;
+    margin: 0;
+}   
+.dd .ddChild{
+    border: 1px solid #c3c3c3;
+    background-color: #fff;
+    left: 47px!important;
+    width: 59px!important;
+}    
+#color_child{
+    z-index: 9999;
+    display: block;
+    position: absolute;
+    visibility: visible;
+    height: 150px!important;
+    overflow-y: auto!important;
+    top: -145px!important;
+}
+.ddChild.ddchild_.border.shadow{
+    left: 10px!important;
+}
+
+.dd .ddTitle{
+    background: #3D404D!important;
+    border: 1px solid #949ba2!important;
+}
+.dd .divider{
+    border-right: none!important;
+    border-left: 1px solid #949ba2!important;
+}
+.borderRadiusTp{
+    border-radius: 5px 5px 5px 5px!important;
+}
+.dd .ddArrow{
+    width: 16px;
+    height: 16px;
+    margin-top: -15px!important;
+    background: none!important;
+}
+.dd .ddArrow:before{
+    content: "\f077";
+    font: normal normal normal 14px/1 FontAwesome;
+    
+    display: inline-block;
+    padding-right: 3px;
+    vertical-align: middle!important;
+    font-size: 15px;
+    color: #fff;
+}
+.dd .ddChild li{
+    padding: 5px;
+    background-color: #3d404c!important;
+    border-bottom: 1px solid #c3c3c3;
+}
+.fa{
+    color: #fff!important;
+}
+.borderRadiusTp .border, .borderRadius .border{
+    border-radius: 5px!important;
+}
+.dd .ddTitle .ddTitleText{
+    padding: 5px 25px 5px 5px!important;
+}
+.borderRadiusBtm .border {
+    -moz-border-radius: 5px 5px 5px 5px!important;
+    border-radius: 5px 5px 5px 5px!important;
+}

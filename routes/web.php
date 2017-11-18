@@ -41,3 +41,4 @@ Route::post('reportperuser','HomeController@index');
 Route::get('viewmap', 'TerritoryController@activeTerritory');
 Route::get('deactivateTerritory/{id}', 'TerritoryController@deactivateTerritory');
 Route::get('activateTerritory/{id}', 'TerritoryController@activateTerritory');
+Route::get('/gotomap/{id}', 'HomeController@gotomap');

@@ -1,0 +1,59 @@
+.markers{
+
+    display: none;
+
+    background-color: white;
+
+    position: absolute;
+
+    margin-top: -445px;
+
+    margin-left: 40%;
+
+    height: 300px;    
+
+}
+
+.pins{
+
+    width:100%;
+
+    padding-top:5px;
+
+}
+
+.modal-task{
+
+    margin-top:5px;
+
+}
+
+.modal-content{
+
+    background-color:#2f323b;
+
+
+
+}
+
+.input-group-addon{
+
+    color: #e0e0e0;
+
+    width: 40px;;
+
+}
+
+.reportfont{
+
+    font-size:15px;
+
+}
+#toast-container>div{
+    margin-top:200px;
+}
+.page-header.navbar .top-menu .navbar-nav>li.dropdown-extended .dropdown-menu{
+    width:100%!important;
+    max-width:500px!important;
+    min-width:500px!important;
+}

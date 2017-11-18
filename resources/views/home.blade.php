@@ -5,7 +5,7 @@
    * element that contains the map. */
    #map {
    min-height: 884px;
-         height: 100%;
+   height: 100%;
    }
    /* Optional: Makes the sample page fill the window. */
    html, body {
@@ -13,11 +13,9 @@
    margin: 0;
    padding: 0;
    }
-   
 </style>
 {{--  <script src="https://maps.googleapis.com/maps/api/js?keyAIzaSyC2_-ZK1vYH7btuM7Qoz5anEajPXI5YtiM"></script>  --}}
-
- <div class="container-main">
+<div class="container-main">
    <div class="pac-card" id="pac-card">
       <div>
          <div id="title">
@@ -43,15 +41,24 @@
             placeholder="Enter a location">
       </div>
    </div>
+   <div id="floating-panel">
+      <input id="latlng" type="text" style="display:none;"value="40.714224,-73.961452">
+      <input id="submit" type="button" style="display:none;" value="Reverse Geocode">
+   </div>
    <div id="map"></div>
-
    <div id="infowindow-content">
       <img src="" width="16" height="16" id="place-icon">
       <span id="place-name"  class="title"></span><br>
       <span id="place-address"></span>
-    </div>
+   </div>
    <button type="button" id="modal" class="btn btn-secondary" style="display:none;" data-toggle="modal" data-target="#myModal"> Launch demo modal</button>
-
+   <button type="button"  id="tooltip" class="homerDemo3 btn btn-warning" style="display:none;">ToolTip</button>
+   <div id="preloader">
+      <div class="inner">
+         <span class="loader"></span>
+      </div>
+   </div>
+   <!-- /PRELOADER -->
 </div>
 <div  class="modal fade" name="markers" id="myModal" tabindex="-1" role="dialog" aria-hidden="true" style="display: none;">
    <div class="modal-dialog">
@@ -64,7 +71,7 @@
                <div class="col-md-12">
                   <form class="form-horizontal" action="addmarker " method="post">
                      {{ csrf_field() }}
-                     <input type="hidden" name="latlng" id="latlng"></input>
+                     <input type="hidden" name="latlng2" id="latlng2"></input>
                      <fieldset>
                         <!-- Form Name -->
                         <!-- Text input-->
@@ -128,7 +135,7 @@
       </div>
    </div>
 </div>
- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script>
    // In the following example, markers appear when the user clicks on the map.
    
@@ -137,30 +144,37 @@
    
    
    
-   
+    
    function initMap() {
+    var  b = '{{$goto->ltdlng}}';
+    var y = b.replace(/&quot;/g, '\"');
+           // console.log(y);
+             {{--  z.push(JSON.parse('['+y+']'));  --}}
+    var ltd = y.split('t').pop().split(',').shift();
+    var ldt = ltd.substring(2,50 );
+     var lng = y.split(':').pop().split('}').shift();
    
      var map = new google.maps.Map(document.getElementById('map'), {
    
-       center: {lat: -34.397, lng: 150.644},
+       center: new google.maps.LatLng(ldt, lng),
    
-       zoom: 8,
+       zoom: 16,
    });
-
+   
    var card = document.getElementById('pac-card');
         var input = document.getElementById('pac-input');
         var types = document.getElementById('type-selector');
         var strictBounds = document.getElementById('strict-bounds-selector');
-
+   
         map.controls[google.maps.ControlPosition.TOP_RIGHT].push(card);
-
+   
         var autocomplete = new google.maps.places.Autocomplete(input);
-
+   
         // Bind the map's bounds (viewport) property to the autocomplete object,
         // so that the autocomplete requests use the current map bounds for the
         // bounds option in the request.
         autocomplete.bindTo('bounds', map);
-
+   
         autocomplete.addListener('place_changed', function() {
           infowindow.close();
          // marker.setVisible(false);
@@ -171,7 +185,7 @@
             window.alert("No details available for input: '" + place.name + "'");
             return;
           }
-
+   
           // If the place has a geometry, then present it on a map.
           if (place.geometry.viewport) {
             map.fitBounds(place.geometry.viewport);
@@ -181,7 +195,7 @@
           }
           //marker.setPosition(place.geometry.location);
           //marker.setVisible(true);
-
+   
           var address = '';
           if (place.address_components) {
             address = [
@@ -190,25 +204,25 @@
               (place.address_components[2] && place.address_components[2].short_name || '')
             ].join(' ');
           }
-
+   
          /* infowindowContent.children['place-icon'].src = place.icon;
           infowindowContent.children['place-name'].textContent = place.name;
           infowindowContent.children['place-address'].textContent = address;
           infowindow.open(map, marker);*/
         });
-
+   
         function setupClickListener(id, types) {
           var radioButton = document.getElementById(id);
           radioButton.addEventListener('click', function() {
             autocomplete.setTypes(types);
           });
         }
-
+   
         setupClickListener('changetype-all', []);
         setupClickListener('changetype-address', ['address']);
         setupClickListener('changetype-establishment', ['establishment']);
         setupClickListener('changetype-geocode', ['geocode']);
-
+   
         document.getElementById('use-strict-bounds')
             .addEventListener('click', function() {
               console.log('Checkbox clicked! New state=' + this.checked);
@@ -223,11 +237,16 @@
            // console.log(y);
              z.push(JSON.parse('['+y+']'));
            // console.log(z);
-            var infowindow = new google.maps.InfoWindow({
+           var ltd = y.split('t').pop().split(',').shift();
+    var ldt = ltd.substring(2,50 );
+     var lng = y.split('g').pop(1).split('}').shift(1);
+    var lng = lng.substring(2,50);
+    
+            {{--  var infowindow = new google.maps.InfoWindow({
    
                 size: new google.maps.Size(150, 50)
    
-            });
+            });  --}}
    
             google.maps.event.addListener(map, 'click', function() {
    
@@ -235,10 +254,11 @@
    
             });
    
+            if("{{$t->active}}" == 1)
                 var x = new google.maps.Polygon({
-   
+                   
                     path: z[i],
-                    strokeColor: '#'+'{{$t->color}}',
+                    strokeColor: '#98fb98',
                     strokeOpacity: 0.8,
                     strokeWeight: 2,
                     fillColor: '#'+'{{$t->color}}',
@@ -247,7 +267,52 @@
                     clickable: false,
                     editable: false
                 });
+            else
+                var x = new google.maps.Polygon({
+                    path: z[i],
+                    strokeColor: '#800000',
+                    strokeOpacity: 0.8,
+                    strokeWeight: 2,
+                    fillColor: '#'+'{{$t->color}}',
+                    fillOpacity: 0.35,
+                   // infowindow: contentString,
+                    clickable: false,
+                    editable: false
+                });
+                {{--  alert(ldt+lng);  --}}
+                 {{--  document.getElementById("{{$t->id}}").innerHTML=ldt+lng;  --}}
+   {{--  document.getElementById("latlng").value=ldt+','+lng;  --}}
    
+   var geocoder = new google.maps.Geocoder;
+        var infowindow = new google.maps.InfoWindow;
+   
+       
+          geocodeLatLng(geocoder, map);
+        var input = ldt+','+lng;
+        var latlngStr = input.split(',', 2);
+        var latlng = {lat: parseFloat(latlngStr[0]), lng: parseFloat(latlngStr[1])};
+        geocoder.geocode({'location': latlng}, function(results, status) {
+          if (status === 'OK') {
+            if (results[0]) {
+              map.setZoom(16);
+              {{--  var marker = new google.maps.Marker({
+                position: latlng,
+                map: map
+              });  --}}
+              infowindow.setContent(results[0].formatted_address);
+              {{--  document.getElementById("{{$t->id}}").innerHTML=results[0].formatted_address;
+               document.getElementById("latlng").value='';  --}}
+              
+            } else {
+              window.alert('No results found');
+            }
+          } else {
+            window.alert('Geocoder failed due to: ' + status);
+            document.getElementById("{{$t->id}}").innerHTML=ldt+lng;
+          }
+        });
+   
+      
             google.maps.event.addListener(x, 'click', function(event) {
    
                 var contentString = "{{$t->description}}";
@@ -260,7 +325,9 @@
             i++;
             x.setMap(map);
         @endforeach
-   
+   function geocodeLatLng(geocoder, map) {
+       
+        }
       @foreach($locations as $location)
    
       var contentString = '<div id="content">'+
@@ -274,8 +341,8 @@
             '<p><b>Phone Number:</b>{{$location->phonenumber}} </p> '+
             '<p><b>Date and Time:</b> </br>{{$location->created_at}} </p> '+
             '<p><b>Comment: </b>{{$location->notes}} </p> '+
-            '<p><a href="editpin/{{$location->id}}">Edit Pin</a> | <a href="deletepin/{{$location->id}}">Delete Pin</a></p> '+
-             '<p><a href="makesale/{{$location->id}}">Make Sale</a></p> '+
+            '<p><a href="../editpin/{{$location->id}}">Edit Pin</a> | <a href="../deletepin/{{$location->id}}">Delete Pin</a></p> '+
+             '<p><a href="../makesale/{{$location->id}}">Make Sale</a></p> '+
             '</div>'+
             '</div>';
    
@@ -289,7 +356,7 @@
            var marker{{$location->id}} = new google.maps.Marker({
              position: location,
               map: map,
-              icon: 'images/{{$location->icon}}',
+              icon: '../images/{{$location->icon}}',
               infowindow: infowindow{{$location->id}}
    
    });
@@ -319,7 +386,7 @@
        map: map
      });
    
-     document.getElementById("latlng").value= marker.getPosition();
+     document.getElementById("latlng2").value= marker.getPosition();
    
    }
    
@@ -332,8 +399,14 @@
          }
    
    google.maps.event.addDomListener(window, 'load', initMap);
+   {{--  document.getElementById("submit").click();  --}}
    
 </script>
- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC2_-ZK1vYH7btuM7Qoz5anEajPXI5YtiM&libraries=drawing,places&callback=initMap"
-          async defer></script>
+<script>
+   jQuery(function(){
+      jQuery('#tooltip').click();
+   });
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAAAKddZzBqbk8aba9FhoWo22G3NyuJ85o&libraries=drawing,places&callback=initMap"
+   async defer></script>
 @include('layouts.footer')
