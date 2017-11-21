@@ -192,15 +192,14 @@
 
                                         <i class="fa fa-list"></i>
                                     </a>
+                                 </li>
+                                 <li >   
                                     @if($status===0)
-                                    <a id="start1"  onclick="start();" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+                                    <a href="starttime"  class="dropdown-toggle" >
 
-                                        <form class="form-inline ml" method="POST" action="starttime">
-                                            {{ csrf_field() }}
-                                            <input type="hidden" name="" id="start"></input> 
-
-                                            <i onclick="start();" style="color:green!important;    font-size: 26px;" class="fa fa-clock-o" id="start" aria-hidden="true"></i>
-                                            <button type="submit" style="display:none;" id="start"></button>
+                                      
+                                            <i  style="color:green!important;    font-size: 26px;" class="fa fa-clock-o" id="start" aria-hidden="true"></i>
+                                          
                                             
                                             {{--  <button id="reset">Reset</button>  --}}
 
@@ -209,16 +208,12 @@
 
                                     @else
 
-                                    <a id="stop1"  onclick="stop();" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
-                                        <form class="form-inline ml" method="POST" action="stoptime">
-                                            {{ csrf_field() }}
-                                            <input type="hidden" name="" id="stop"></input> 
+                                    <a href="stoptime"   class="dropdown-toggle" >
+                                     
 
-                                            <i onclick="stop();" style="color:red!important;    font-size: 26px;" id="start" class="fa fa-clock-o" aria-hidden="true"></i>
+                                            <i  style="color:red!important;    font-size: 26px;" id="start" class="fa fa-clock-o" aria-hidden="true"></i>
 
-                                            <button type="submit" id="stop" style="display:none;"></button>
-                                            
-                                            {{--  <button id="reset">Reset</button>  --}}
+                                       
 
                                         </form>
 
@@ -226,6 +221,7 @@
 
                                     </a>
                                     @endif
+                                    </li>
                                 <ul class="dropdown-menu animated flipInX">
 
                                     <li>  <ul class="dropdown-menu-list scroller" style="overflow-y: scroll;
@@ -272,6 +268,7 @@
 </div>
 <script>
     function start(){
+        
         document.getElementById("start").click();
     }
 
