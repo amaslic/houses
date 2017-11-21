@@ -18,6 +18,7 @@ class HourController extends Controller
         if($hour){
           
             $hour->active=1;
+            $hour->created_at = Carbon::now();
             $hour->save();
             return back();
         }else{
@@ -42,13 +43,13 @@ class HourController extends Controller
                 $starttime = $hour->created_at;
         
                 $workhours = $stoptime->diffInMinutes($starttime);
-                
-                $hours = $workhours /60;
-                $hours = number_format($hours,0);
-                $minutes = $workhours % 60;
+                $workhours = $workhours + $hour->total_time;
+                // $hours = $workhours /60;
+                // $hours = number_format($hours,0);
+                // $minutes = $workhours % 60;
         
                 $hour->stoptime = $stoptime;
-                $hour->total_time= $hours.' : '.$minutes;
+                $hour->total_time= $workhours ;
                 $hour->active=0;
 
                 $hour->save();
