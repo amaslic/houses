@@ -307,14 +307,24 @@ class HomeController extends Controller
     public function gotomap($id){
         $locations = Marker::where('user_id', Auth::id())->get();
         $goto = Territory::where('id', $id)->first();
-       
+        $now = Carbon::now()->toDateString();
                     $pins = Pin::get();
 
                     $territory = Territory::where('user_id', Auth::id())->get();
 
-                   
+                    $status = Hour::where('date',$now)->where('user_id',Auth::id())->first();
+                    if($status===null){
+                        
+                        $status=0;
+                    }else {
+                        if($status->active===1){
+                            $status=1;
+                            
+                        }else
+                        $status=0;
+                    }
 
-                    return view('home1', compact('locations','pins','territory','goto'));
+                    return view('home1', compact('locations','pins','territory','goto','status'));
     }
 
    

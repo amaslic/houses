@@ -192,13 +192,12 @@
 
                                         <i class="fa fa-list"></i>
                                     </a>
-                                 </li>
-                                 <li >   
+                                
                                     @if($status===0)
-                                    <a href="starttime"  class="dropdown-toggle" >
+                                    <a href="{!! url('starttime'); !!}"  class="dropdown-toggle" >
 
                                       
-                                            <i  style="color:green!important;    font-size: 26px;" class="fa fa-clock-o" id="start" aria-hidden="true"></i>
+                                            <i  style="color:#4caf50!important;    font-size: 26px;" class="fa fa-clock-o" id="start" aria-hidden="true"></i>
                                           
                                             
                                             {{--  <button id="reset">Reset</button>  --}}
@@ -208,10 +207,10 @@
 
                                     @else
 
-                                    <a href="stoptime"   class="dropdown-toggle" >
+                                    <a href="{!! url('stoptime'); !!}"   class="dropdown-toggle" >
                                      
 
-                                            <i  style="color:red!important;    font-size: 26px;" id="start" class="fa fa-clock-o" aria-hidden="true"></i>
+                                            <i  style="color:#ff5722!important;    font-size: 26px;" id="start" class="fa fa-clock-o" aria-hidden="true"></i>
 
                                        
 
@@ -221,7 +220,7 @@
 
                                     </a>
                                     @endif
-                                    </li>
+                                    
                                 <ul class="dropdown-menu animated flipInX">
 
                                     <li>  <ul class="dropdown-menu-list scroller" style="overflow-y: scroll;
