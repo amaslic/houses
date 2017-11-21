@@ -97,13 +97,8 @@
                                  @if (Auth::user()->isAdmin())
 
                                 <li class="dropdown dropdown-extended dropdown-notification" id="header_notification_bar">
-
                                     <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
-
                                         <i class="fa fa-map-o"></i>
-
-                                        
-
                                     </a>
 
                                 <ul class="dropdown-menu animated flipInX">
@@ -196,11 +191,41 @@
                                     <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
 
                                         <i class="fa fa-list"></i>
+                                    </a>
+                                    @if($status===0)
+                                    <a id="start1"  onclick="start();" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+
+                                        <form class="form-inline ml" method="POST" action="starttime">
+                                            {{ csrf_field() }}
+                                            <input type="hidden" name="" id="start"></input> 
+
+                                            <i onclick="start();" style="color:green!important;    font-size: 26px;" class="fa fa-clock-o" id="start" aria-hidden="true"></i>
+                                            <button type="submit" style="display:none;" id="start"></button>
+                                            
+                                            {{--  <button id="reset">Reset</button>  --}}
+
+                                        </form>
+                                    </a>
+
+                                    @else
+
+                                    <a id="stop1"  onclick="stop();" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+                                        <form class="form-inline ml" method="POST" action="stoptime">
+                                            {{ csrf_field() }}
+                                            <input type="hidden" name="" id="stop"></input> 
+
+                                            <i onclick="stop();" style="color:red!important;    font-size: 26px;" id="start" class="fa fa-clock-o" aria-hidden="true"></i>
+
+                                            <button type="submit" id="stop" style="display:none;"></button>
+                                            
+                                            {{--  <button id="reset">Reset</button>  --}}
+
+                                        </form>
 
                                         
 
                                     </a>
-
+                                    @endif
                                 <ul class="dropdown-menu animated flipInX">
 
                                     <li>  <ul class="dropdown-menu-list scroller" style="overflow-y: scroll;
@@ -209,10 +234,6 @@
                                    
                                         @foreach($territory as $userter)
                                             <li  >
-                                                 
-                                                        
-                                                       
-
                                                 <a id="{{$userter->id}}" href="/gotomap/{{$userter->id}}">
                                                      
                                                       <span class="details">
@@ -227,33 +248,9 @@
                                                 
                                             </li>
                                         @endforeach
-                                      
- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-<script>
- var i =  0;
-var z = [];
-function goto($this) {
-   var a = '{'+$this.substring(1, 48)+'}';
-   alert(a);
-     
-       
-}
-          
-   
-
-
-
-</script>
-                                            
-
                                         </ul>
-
                                     </li>
-
                             @endif
-
-                           
-
                             <!-- END QUICK SIDEBAR TOGGLER -->
 
                         </ul>
@@ -273,5 +270,13 @@ function goto($this) {
             <!-- END HEADER -->
 
 </div>
+<script>
+    function start(){
+        document.getElementById("start").click();
+    }
 
+    function stop(){
+        document.getElementById("stop").click();
+    }
+</script>
            

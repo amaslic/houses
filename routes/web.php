@@ -43,3 +43,6 @@ Route::get('deactivateTerritory/{id}', 'TerritoryController@deactivateTerritory'
 Route::get('activateTerritory/{id}', 'TerritoryController@activateTerritory');
 Route::get('/gotomap/{id}', 'HomeController@gotomap');
 Route::post('reportperhour','HomeController@index');
+
+Route::post('starttime', 'HourController@startTime');
+Route::post('stoptime', 'HourController@stopTime');

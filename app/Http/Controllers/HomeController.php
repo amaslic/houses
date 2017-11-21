@@ -17,7 +17,7 @@ use App\Marker;
 use App\Pin;
 
 use App\Sale;
-
+use App\Hour;
 use Carbon\Carbon;
 
 use Log;
@@ -188,11 +188,24 @@ class HomeController extends Controller
                  $goto = Territory::first();
                     $pins = Pin::get();
 
+                    $now = Carbon::now()->toDateString();
+                    $status = Hour::where('date',$now)->where('user_id',Auth::id())->first();
                     $territory = Territory::where('user_id', Auth::id())->get();
                     // $territory=$territory->where('active',1);
                    
+                    if($status===null){
+                        
+                        $status=0;
+                    }else {
+                        if($status->active===1){
+                            $status=1;
+                            
+                        }else
+                        $status=0;
+                    }
+                    
 
-                    return view('home', compact('locations','pins','territory','goto'));
+                    return view('home', compact('locations','pins','territory','goto', 'status'));
 
                
 

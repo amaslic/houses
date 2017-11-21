@@ -41,6 +41,22 @@
             placeholder="Enter a location">
       </div>
    </div>
+
+    
+    
+
+    {{--  <div class="container">
+    <h1>Timer</h1>
+
+    <hr/><h3 style='margin-top:20px;'>Before you start working, run the timer!</h3>
+    <span id="stopwatch">00:00:00</span>
+    <p>
+        <input class='btn btn-primary' type='button' value='Play/Pause' onclick='Example1.Timer.toggle();' />
+        <input class='btn btn-primary' type='button' value='Stop/Reset' onclick='Example1.resetStopwatch();' />
+    </p>
+    </div>  --}}
+    <!--END TIMER-->
+
    <div id="floating-panel">
       <input id="latlng" type="text" style="display:none;"value="40.714224,-73.961452">
       <input id="submit" type="button" style="display:none;" value="Reverse Geocode">
@@ -409,4 +425,7 @@
 </script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAAAKddZzBqbk8aba9FhoWo22G3NyuJ85o&libraries=drawing,places&callback=initMap"
    async defer></script>
+
+  
+  
 @include('layouts.footer')

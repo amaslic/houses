@@ -35,6 +35,12 @@
   <script src="{{ asset('js/msdropdown/jquery.dd.min.js') }}"  type="text/javascript"></script>
   <script src="{{ asset('plugins/toastr/toastr.min.js') }}"  type="text/javascript"></script>
   <script src="{{ asset('js/t-alert.js') }}"  type="text/javascript"></script>
+
+{{--  <script src="{{ asset('js/timer/res/jquery.timer.js')}}" type="text/javascript"></script>
+  <script src="{{ asset('js/timer/res/demo.js')}}" type="text/javascript"></script>  --}}
+
+  {{--  <script src="{{ asset('js/timer/main.js')}}" type="text/javascript"></script>  --}}
+  {{--  <script src="{{ asset('js/timer/stopwatch.js')}}" type="text/javascript"></script>  --}}
  
   
 
