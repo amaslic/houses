@@ -14,7 +14,9 @@ class HourController extends Controller
 
         $now = Carbon::now()->toDateString();
         $hour = Hour::where('date',$now)->where('user_id',Auth::id())->first();
+       
         if($hour){
+          
             $hour->active=1;
             $hour->save();
             return back();
@@ -23,6 +25,7 @@ class HourController extends Controller
                 'user_id' => Auth::id(),
                 'date' => Carbon::now()->toDateTimeString(),
                 'total_time' => 0,
+                'stoptime' => Carbon::now(),
                 'active'    => 1,
             ]);
             return back();
@@ -44,7 +47,7 @@ class HourController extends Controller
                 $hours = number_format($hours,0);
                 $minutes = $workhours % 60;
         
-                $hour->updated_at = $stoptime;
+                $hour->stoptime = $stoptime;
                 $hour->total_time= $hours.' : '.$minutes;
                 $hour->active=0;
 
