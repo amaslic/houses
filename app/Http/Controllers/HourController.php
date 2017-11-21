@@ -25,7 +25,7 @@ class HourController extends Controller
          $hour = Hour::create([
                 'user_id' => Auth::id(),
                 'date' => Carbon::now()->toDateTimeString(),
-                'total_time' => 0,
+                'total_time' => 0, 
                 'stoptime' => Carbon::now(),
                 'active'    => 1,
             ]);
