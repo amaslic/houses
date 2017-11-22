@@ -46,3 +46,5 @@ Route::post('reportperhour','HomeController@index');
 
 Route::get('starttime', 'HourController@startTime');
 Route::get('stoptime', 'HourController@stopTime');
+
+Route::post('reportpertime', 'HomeController@index');

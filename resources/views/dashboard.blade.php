@@ -179,40 +179,43 @@
             </div>
             <!-- End .panel --> 
          </div>
-         </div>
-
          
 
-
-         <div class="col-md-6 col-lg-6">
-            <div class="panel panel-card recent-activites">
-               <!-- Start .panel -->
-               <div class="card-header" style="padding-bottom:20px;">
-                  WORKED HOURS PER USER
-                  <div class="col-md-3 right">
-                     <form class="form-horizontal" action="reportperuser " method="post">
-                        {{ csrf_field() }}
-                        <select class="form-control" name="peruser" onchange="this.form.submit(null)" style="width:140px;">
-                           <option value="null">Select User</option>
-                           @foreach($users as $user)
-                           <option value="{{$user->id}}">{{$user->name}}</option>
-                           @endforeach
-                        </select>
-                     </form>
-                  </div>
-               </div>
-               <div class="card-block text-xs-center">
-                  <h3>{{$perusername}}</h3>
-                  <hr style="border-top:1px solid #4c4c4c;">
-                  <p class="reportfont">Sales Today: <b>{{$salestodayperuser}}</b></p>
-                  {{--  <p class="reportfont">Sales Last Week: <b>{{$saleslastweekperuser}}</b></p>
-                  <p class="reportfont">Sales Last Month: <b>{{$saleslastmonthperuser}}</b></p>
-                  <p class="reportfont">Sales Last year: <b>{{$saleslastyearperuser}}</b></p>
-                  <p class="reportfont">Total: <b>{{$totalsalesperuser}}</b></p>  --}}
-               </div>
+        <!-- WORKED HOURS PER USER -->
+            <div class="col-md-6 col-lg-6">
+                <div class="panel panel-card recent-activites">
+                <!-- Start .panel -->
+                <div class="card-header" style="padding-bottom:20px;">
+                        WORKED HOURS PER USER
+                        <div class="col-md-3 right">
+                        <form class="form-horizontal" action="reportpertime" method="post">
+                            {{ csrf_field() }}
+                            <select class="form-control" name="perusertime" onchange="this.form.submit(null)" style="width:140px;">
+                            <option value="null">Select User</option>
+                            @foreach($users as $user)
+                            <option value="{{$user->id}}">{{$user->name}}</option>
+                            @endforeach
+                            </select>
+                        </div>
+                </div>
+                    
+                <div class="card-block text-xs-center">
+                    {{--  <h3>{{$perusername}}</h3>  --}}
+                    Please select date.
+                    <div class="form-inline">
+                        <div class="form-group">
+                            <input type="date" class="form-control" name="date" id="date">
+                        </div>
+                    </div>         
+                </div>
+                    </form><!-- End form --> 
+                    <div class="card-block text-xs-center">
+                        <hr style="border-top:1px solid #4c4c4c;">
+                        <p class="reportfont">Total hours worked:<b> {{ $hours. ' Hours and  '. $minutes .' minutes '}}</b></p>
+                    </div>
+                </div>
+                <!-- End .panel --> 
             </div>
-            <!-- End .panel --> 
-         </div>
 
 
 

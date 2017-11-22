@@ -11,7 +11,7 @@ use Illuminate\Http\Request;
 use Auth;
 
 use App\User;
-
+use Illuminate\Support\Facades\DB;
 use App\Marker;
 
 use App\Pin;
@@ -65,6 +65,9 @@ class HomeController extends Controller
         if(Auth::check()){
 
            if(Auth::user()->isAdmin()){
+            
+            
+            
 
                $users = User::get();
 
@@ -108,6 +111,8 @@ class HomeController extends Controller
 
                $peruser = User::find($peruserform);
 
+
+
               
 
                if(empty($peruserform)){
@@ -126,6 +131,8 @@ class HomeController extends Controller
                       $userid = null;
 
                 }else {
+
+                   
 
                     $salestodayperuser = Sale::where('created_at', '>=', Carbon::now()->subDay())->where('user_id',$peruser->id)->count();
 
@@ -164,6 +171,37 @@ class HomeController extends Controller
                         $countmarkersperuser = count($markersperhours);
                        
                     }
+
+
+                    $perusertime = request('perusertime');
+                    $perusertimes = User::find($perusertime);
+                    $date = request('date');
+
+                    if(empty($perusertimes)){
+
+                        $workhours='Please Select user';
+                        $hours='';
+                        $minutes='';
+
+                    }else{
+                        
+                        $gettime = Hour::where('date',$date)->where('user_id',$perusertime)->first();
+                        
+
+                        
+                        $hours = $gettime->total_time /60;
+                        $hours = number_format($hours,0);
+                        $minutes = $gettime->total_time % 60;
+                        
+
+                        
+                     }
+
+                  // $gettime = DB::table('hours')->where('total_time','4')->first();
+                    //$gettime = Hour::where('dat')->where('user_id',Auth::id())->first();
+                    //dd($gettime);
+                     
+                   
                   
 
 
@@ -178,7 +216,7 @@ class HomeController extends Controller
 
             'totalsalessum','users','perusername','salestodayperuser','saleslastweekperuser','saleslastmonthperuser',
 
-            'saleslastyearperuser','totalsalesperuser','userid','markersperhours','countmarkersperuser','peruserhour2'));
+            'saleslastyearperuser','totalsalesperuser','userid','markersperhours','countmarkersperuser','peruserhour2', 'gettime', 'hours','minutes'));
 
         }
 
