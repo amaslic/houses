@@ -60,8 +60,6 @@
          <link href="{{ asset('css/msdropdown/dd.css')}}" rel="stylesheet" type="text/css" />
          <link href="{{ asset('css/searchstyle.css')}}" rel="stylesheet" type="text/css" />
         
-<script  data-cfasync="false" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAAAKddZzBqbk8aba9FhoWo22G3NyuJ85o&libraries=drawing,places&callback=initMap"
-   async defer></script>
 
          
 
