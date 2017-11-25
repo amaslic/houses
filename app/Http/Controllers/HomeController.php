@@ -187,12 +187,17 @@ class HomeController extends Controller
                         
                         $gettime = Hour::where('date',$date)->where('user_id',$perusertime)->first();
                         
-
+                        if($gettime != null){
                         
                         $hours = $gettime->total_time /60;
                         $hours = number_format($hours,0);
                         $minutes = $gettime->total_time % 60;
-                        
+                        }else
+                        {
+                            $hours='0';
+                            $minutes='0';
+                        }
+                    
 
                         
                      }

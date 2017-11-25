@@ -173,7 +173,7 @@
                 <div class="card-block text-xs-center">
                   <h3>{{$peruserhour2}}</h3>
                   <hr style="border-top:1px solid #4c4c4c;">
-                  <p class="reportfont">Markers : <b>{{$countmarkersperuser}}</b></p>
+                  <p class="reportfont">Markers : <b style="font-size:19px!important;">{{$countmarkersperuser}}</b></p>
                  
                </div>
             </div>
@@ -190,7 +190,8 @@
                         <div class="col-md-3 right">
                         <form class="form-horizontal" action="reportpertime" method="post">
                             {{ csrf_field() }}
-                            <select class="form-control" name="perusertime" onchange="this.form.submit(null)" style="width:140px;">
+                            {{--  <select class="form-control" name="perusertime" onchange="this.form.submit(null)" style="width:140px;">  --}}
+                            <select class="form-control" name="perusertime" style="width:140px;">
                             <option value="null">Select User</option>
                             @foreach($users as $user)
                             <option value="{{$user->id}}">{{$user->name}}</option>
@@ -200,18 +201,23 @@
                 </div>
                     
                 <div class="card-block text-xs-center">
+
+                
                     {{--  <h3>{{$perusername}}</h3>  --}}
                     Please select date.
                     <div class="form-inline">
                         <div class="form-group">
                             <input type="date" class="form-control" name="date" id="date">
                         </div>
+                        <div class="form-group" style="margin-left:30px;display:block;" >                        
+                            <button type="submit" class="btn btn-warning">Report</button>
+                        </div>
                     </div>         
                 </div>
                     </form><!-- End form --> 
                     <div class="card-block text-xs-center">
                         <hr style="border-top:1px solid #4c4c4c;">
-                        <p class="reportfont">Total hours worked:<b> {{ $hours. ' Hours and  '. $minutes .' minutes '}}</b></p>
+                        <p class="reportfont">Worked time:<b style="font-size:19px!important;"> {{ $hours }}</b> hour  <b style="font-size:19px!important;">{{ $minutes }}</b> minute</p>
                     </div>
                 </div>
                 <!-- End .panel --> 
