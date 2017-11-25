@@ -152,7 +152,7 @@
    </div>
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-<script>
+<script  data-cfasync="false">
    // In the following example, markers appear when the user clicks on the map.
    
    // Each marker is labeled with a single alphabetical character.
@@ -423,8 +423,8 @@
       jQuery('#tooltip').click();
    });
 </script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAAAKddZzBqbk8aba9FhoWo22G3NyuJ85o&libraries=drawing,places&callback=initMap"
-   async defer></script>
+{{--  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAAAKddZzBqbk8aba9FhoWo22G3NyuJ85o&libraries=drawing,places&callback=initMap"
+   async defer></script>  --}}
 
   
   
