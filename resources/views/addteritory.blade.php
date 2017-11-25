@@ -145,11 +145,11 @@
 	</div>
 </div>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script  data-cfasync="false" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 
 
-<script>
- $('.createTerritoryAlert').click();
+<script data-cfasync="false">
+ //$('.createTerritoryAlert').click();
 	var lineCoords = [];
 
     initMap = function() {
@@ -411,13 +411,14 @@ function GetAddress(latLng) {
 }
 initMap();
 </script>
+<script  data-cfasync="false" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAAAKddZzBqbk8aba9FhoWo22G3NyuJ85o&libraries=drawing,places&callback=initMap"
+         async defer></script>
 <script>
    jQuery(function(){
       jQuery('#tooltip').click();
    });
 </script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAAAKddZzBqbk8aba9FhoWo22G3NyuJ85o&libraries=drawing,places&callback=initMap"
- async defer></script>
+
 
 
 
