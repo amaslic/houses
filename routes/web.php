@@ -50,3 +50,4 @@ Route::get('stoptime', 'HourController@stopTime');
 Route::post('reportpertime', 'HomeController@index');
 Route::post('/addpath', 'HomeController@addPath');
 Route::get('/getpath/{id}', 'HomeController@getPath');
+Route::post('/getpaths', 'HomeController@getPaths');

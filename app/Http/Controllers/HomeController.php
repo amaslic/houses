@@ -386,6 +386,23 @@ class HomeController extends Controller
         return back();
     }
 
+    public function getPaths(){
+        if(Auth::user()->isAdmin()){
+            $users = User::find(Input::get('usernamepath'));
+
+            $day = Input::get('day');
+            $month = Input::get('month');
+            $year =  Input::get('year');
+           // $fullDate = $day + '/' + $month + '/' + $year;
+            $path = Path::where('u_id', Input::get('usernamepath'))->where('date', $day+'/'+$month+'/'+$year)->get();
+           // $locations = Marker::where('user_id', $id)->get();
+
+            return view ('path', compact('users', 'path'));
+        }else {
+            return back();
+        }
+    }
+
    
     public function getPath($id){
         if(Auth::user()->isAdmin()){

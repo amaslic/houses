@@ -223,7 +223,46 @@
                 <!-- End .panel --> 
             </div>
 
+            <div class="col-md-6 col-lg-6">
+                <div class="panel panel-card recent-activites">
+                <!-- Start .panel -->
+                <div class="card-header" style="padding-bottom:20px;">
+                        PATH PER USER
+                        <div class="col-md-3 right">
+                        <form class="form-horizontal" action="getpaths" method="post">
+                            {{ csrf_field() }}
+                            {{--  <select class="form-control" name="perusertime" onchange="this.form.submit(null)" style="width:140px;">  --}}
+                            <select class="form-control" name="usernamepath" style="width:140px;">
+                            <option value="null">Select User</option>
+                            @foreach($users as $user)
+                            <option value="{{$user->id}}">{{$user->name}}</option>
+                            @endforeach
+                            </select>
+                        </div>
+                </div>
+                    
+                <div class="card-block text-xs-center">
 
+                
+                    {{--  <h3>{{$perusername}}</h3>  --}}
+                    Please select date.
+                    <div class="form-inline">
+                        <div class="form-group">
+                            <!--<input type="date" class="form-control" name="date" id="date"> -->
+                            <input type="text" name="day" style="max-width: 25px" />
+                            <input type="text" name="month" style="max-width: 25px; margin-left: 2px;" />
+                            <input type="text" name="year" style="max-width: 40px; margin-left: 2px;" />
+                        </div>
+                        <div class="form-group" style="margin-left:30px;display:block;" >                        
+                            <button type="submit" class="btn btn-warning">Report</button>
+                        </div>
+                    </div>         
+                </div>
+                    </form><!-- End form --> 
+
+                </div>
+                <!-- End .panel --> 
+            </div>
 
     </div>
    </div>

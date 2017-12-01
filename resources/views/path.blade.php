@@ -52,12 +52,18 @@
             placeholder="Enter a location">
       </div>
     </div>
+  
+    
+   
+    <input type="text" id="pathm" disabled style="position: absolute; top: 50px; left: 350px; z-index: 9999;" />
     <div id="map"></div>
     <div id="infowindow-content">
       <img src="" width="16" height="16" id="place-icon">
       <span id="place-name"  class="title"></span><br>
       <span id="place-address"></span>
     </div>
+
+
 
 
 </div>
@@ -80,10 +86,12 @@
 
 <script  data-cfasync="false">
 
+
+     var path = [];
         var lineCoords = [];
         initMap = function () {
         var map = new google.maps.Map(document.getElementById('map'), {
-          center: {lat:44.834637104692426,lng:19.295486334703476},
+          center: {lat:  38.89103282648846, lng: -90.703125},
           zoom: 13,
          
         });
@@ -163,12 +171,14 @@
   
         q =  '{{$t->coords}}';
         var y = q.replace(/&quot;/g, '\"');
-         z.push(y);
-           console.log(z);
+        var m = y.replace(/[[]]/g , ''); 
+      //  var n = m.replace("]", "");
+        z.push(JSON.parse(m));
+           console.log(z[0]);
   
            
             var flightPath = new google.maps.Polyline({
-                position: z,
+                position: z[0],
                 geodesic: true,
                 strokeColor: '#FF0000',
                 strokeOpacity: 1.0,
@@ -179,24 +189,33 @@
 
            
           i++;
-        @endforeach 
-
-        var polylineLength = 0;
-            for (var i = 0; i < z.length; i++) {
-            var lat = parseFloat(z[i].lat);
-            var lng = parseFloat(z[i].lng);
-            var pointPath = new google.maps.LatLng(lat,lng);
-            path.push(pointPath);
-            if (i > 0) polylineLength += google.maps.geometry.spherical.computeDistanceBetween(path[i], path[i-1]);
+   // console.log(z[0].length);
+          var polylineLength = 0;
+            for (var pp = 0; pp < z[0].length; pp++) {
+             
+            var lat = parseFloat(z[0][pp].lat);
+            var lng = parseFloat(z[0][pp].lng);
+            //console.log(lat);
+            //console.log(lng);
+            var pointsPath = new google.maps.LatLng(lat,lng);
+           // console.log(pointsPath);
+            path.push(pointsPath);
+            //console.log(path);
+            if(pp > 0) polylineLength += google.maps.geometry.spherical.computeDistanceBetween(path[pp], path[pp-1]);
 
             }
-            console.log(polylineLength);
+            //console.log(polylineLength);
+            var km = polylineLength*0.001;
+            $("#pathm").val(parseFloat(km).toFixed(2)+" km");
+        @endforeach 
+
+   
 
       }
 
     initMap();
 </script>
-<script  data-cfasync="false" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAAAKddZzBqbk8aba9FhoWo22G3NyuJ85o&libraries=drawing,places&callback=initMap"
+<script  data-cfasync="false" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAAAKddZzBqbk8aba9FhoWo22G3NyuJ85o&libraries=drawing,places,geometry&callback=initMap"
          async defer></script>
 
 
