@@ -19,6 +19,8 @@ use App\Pin;
 use App\Sale;
 use App\Hour;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Input;
+use App\Path;
 
 use Log;
 
@@ -230,7 +232,7 @@ class HomeController extends Controller
                     $locations = Marker::where('user_id', Auth::id())->get();
                  $goto = Territory::first();
                     $pins = Pin::get();
-
+                    
                     $now = Carbon::now()->toDateString();
                     $status = Hour::where('date',$now)->where('user_id',Auth::id())->first();
                     $territory = Territory::where('user_id', Auth::id())->get();
@@ -370,7 +372,31 @@ class HomeController extends Controller
                     return view('home1', compact('locations','pins','territory','goto','status'));
     }
 
-   
+    public function addPath(){
+        //var_dump(Input::get('coords'));
+        
+                        $path = Path::create([
+                            'u_id' => Auth::id(),
+                            'u_name' => Auth::user()->email,
+                            'coords' => Input::get('coords'),
+                            'km' => 0,
+                            'date' => Input::get('date'),
+                            
+                        ]);
+        return back();
+    }
 
+   
+    public function getPath($id){
+        if(Auth::user()->isAdmin()){
+            $users = User::find($id);
+            $path = Path::where('u_id', $id)->get();
+           // $locations = Marker::where('user_id', $id)->get();
+
+            return view ('path', compact('users', 'path'));
+        }else {
+            return back();
+        }
+    }
 }
 

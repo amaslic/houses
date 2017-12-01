@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Carbon\Carbon;
 use Auth;
 use App\Hour;
+use App\Path;
+use Illuminate\Support\Facades\Input;
 
 class HourController extends Controller
 {
@@ -53,6 +55,17 @@ class HourController extends Controller
                 $hour->active=0;
 
                 $hour->save();
+
+               
+                $path = Path::create([
+                    'u_id' => Auth::id(),
+                    'u_name' => "default",
+                    'coords' => Input::get('coords'),
+                    'km' => 0,
+                    'date' => Input::get('date'),
+                    
+                ]);
+
                 return back();
             }
 }
