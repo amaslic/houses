@@ -408,7 +408,7 @@ mapTypeId:google.maps.MapTypeId.ROAD
                 }
         });*/
         $('#coords').val(localStorage.getItem("gpsCoords").toString());
-}, 5000);
+}, 30000);
 
 
 /*
