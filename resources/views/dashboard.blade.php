@@ -10,7 +10,7 @@
                <h4 class="float-left">Reports</h4>
                <ol class="breadcrumb float-left float-md-right">
                   <li class="breadcrumb-item"><span style="font-size:15px;">TOTAL: {{$totalsalescount}}</span></li>
-                  <li class="breadcrumb-item"><span style="font-size:15px;">{{$totalsalessum}}$</span></li>
+                  <li class="breadcrumb-item"><span style="font-size:15px;">${{$totalsalessum}}</span></li>
                </ol>
             </div>
          </div>
@@ -28,7 +28,7 @@
                </div>
                <div class="card-block text-xs-center">
                   <i class=" fa fa-dollar fa-4x"></i> 
-                  <h3 class="right panel-middle margin-b-0">{{$todaysalessum}}$</h3>
+                  <h3 class="right panel-middle margin-b-0">${{$todaysalessum}}</h3>
                   </br>
                   <div class="clearfix"></div>
                </div>
@@ -49,7 +49,7 @@
                </div>
                <div class="card-block text-xs-center">
                   <i class=" fa fa-dollar fa-4x"></i> 
-                  <h3 class="right panel-middle margin-b-0">{{$lastweeksalessum}}$</h3>
+                  <h3 class="right panel-middle margin-b-0">${{$lastweeksalessum}}</h3>
                   </br>
                   <div class="clearfix"></div>
                </div>
@@ -70,7 +70,7 @@
                </div>
                <div class="card-block text-xs-center">
                   <i class=" fa fa-dollar fa-4x"></i> 
-                  <h3 class="right panel-middle margin-b-0">{{$lastmonthsalessum}}$</h3>
+                  <h3 class="right panel-middle margin-b-0">${{$lastmonthsalessum}}</h3>
                   </br>
                   <div class="clearfix"></div>
                </div>
@@ -91,7 +91,7 @@
                </div>
                <div class="card-block text-xs-center">
                   <i class=" fa fa-dollar fa-4x"></i> 
-                  <h3 class="right panel-middle margin-b-0">{{$lastyearsalessum}}$</h3>
+                  <h3 class="right panel-middle margin-b-0">${{$lastyearsalessum}}</h3>
                   </br>
                   <div class="clearfix"></div>
                </div>
