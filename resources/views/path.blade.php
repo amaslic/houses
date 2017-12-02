@@ -166,7 +166,7 @@
 
         var i = 0;
         var z = [];
-
+        var polylineLength = 0;
         @foreach($path as $t)
   
         q =  '{{$t->coords}}';
@@ -174,11 +174,11 @@
         var m = y.replace(/[[]]/g , ''); 
       //  var n = m.replace("]", "");
         z.push(JSON.parse(m));
-           console.log(z[0]);
+           console.log(z[i]);
   
            
             var flightPath = new google.maps.Polyline({
-                position: z[0],
+                position: z[i],
                 geodesic: true,
                 strokeColor: '#FF0000',
                 strokeOpacity: 1.0,
@@ -187,14 +187,11 @@
       
               flightPath.setMap(map);
 
-           
-          i++;
-   // console.log(z[0].length);
-          var polylineLength = 0;
-            for (var pp = 0; pp < z[0].length; pp++) {
+              
+            for (var pp = 0; pp < z[i].length; pp++) {
              
-            var lat = parseFloat(z[0][pp].lat);
-            var lng = parseFloat(z[0][pp].lng);
+            var lat = parseFloat(z[i][pp].lat);
+            var lng = parseFloat(z[i][pp].lng);
             //console.log(lat);
             //console.log(lng);
             var pointsPath = new google.maps.LatLng(lat,lng);
@@ -205,8 +202,11 @@
 
             }
             //console.log(polylineLength);
-            var km = polylineLength*0.001;
-            $("#pathm").val(parseFloat(km).toFixed(2)+" km");
+            var km = polylineLength*0.001*0.621371192;
+            $("#pathm").val(parseFloat(km).toFixed(2)+" miles");
+          i++;
+   // console.log(z[0].length);
+          
         @endforeach 
 
    

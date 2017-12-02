@@ -194,10 +194,10 @@
                                     </a>
                                 
                                     @if($status===0)
-                                    <a href="{!! url('starttime'); !!}"  class="dropdown-toggle" >
+                                    <a href="{!! url('starttime'); !!}"  class="dropdown-toggle" id="start">
 
                                       
-                                            <i  style="color:#4caf50!important;    font-size: 26px;" class="fa fa-clock-o" id="start" aria-hidden="true"></i>
+                                            <i  style="color:#4caf50!important;    font-size: 26px;" class="fa fa-clock-o"  aria-hidden="true"></i>
                                           
                                             
                                             {{--  <button id="reset">Reset</button>  --}}
@@ -207,10 +207,10 @@
 
                                     @else
 
-                                    <a href="{!! url('stoptime'); !!}"   class="dropdown-toggle stop-form" >
+                                    <a  class="dropdown-toggle stop-form" id="stop">
                                      
 
-                                            <i  style="color:#ff5722!important;    font-size: 26px;" id="start" class="fa fa-clock-o" aria-hidden="true"></i>
+                                            <i  style="color:#ff5722!important;    font-size: 26px;"  class="fa fa-clock-o" aria-hidden="true"></i>
 
                                        
 
@@ -221,7 +221,7 @@
                                     </a>
                                     @endif
                                     <li>
-                                    <form action="addpath" method="post" class="path-form">
+                                    <form action="addpath" method="post" class="path-form" style="display:none">
                                     {{ csrf_field() }}
                                     <input name="date" id="date" type="hidden" />
 <input name="coords" id="coords" type="hidden" />
@@ -278,6 +278,24 @@
 
 
 <script>
+    $('#start').click(function(){
+     /*   gpsCoords1 = [];
+            var y1 = position.coords.latitude;
+            var y = position.coords.longitude;
+            var qqq =  gpsCoords1.push("{lat:"+y1+","+"lng:"+y+"}");
+       // qqq.push(navigator.geolocation.getCurrentPosition());*/
+        localStorage.setItem('startPath', 1);
+        //localStorage.setItem('gpsCoords', JSON.stringify(qqq).toString());
+    });
+
+    $('#stop').click(function(){
+        qq = [];
+        localStorage.setItem('time', 0);
+        localStorage.setItem('startPath', 0);
+        localStorage.setItem('gpsCoords', JSON.stringify(qq));
+        $('.path-form').submit();
+    });
+
     function start(){
         
         document.getElementById("start").click();
@@ -291,6 +309,7 @@
 
 
       var watchID = null;
+      if(localStorage.getItem("startPath") == 1){
 $(document).ready(function(){
 	var optn = {
 enableHighAccuracy: true,
@@ -301,7 +320,7 @@ enableHighAccuracy: true,
 	 navigator.geolocation.watchPosition(success, fail, optn);
 	else
 	 $("p").html("HTML5 Not Supported");
-$("#button").click(function(){
+/*$("#button").click(function(){
  
 	if(watchID)
 	 navigator.geolocation.clearWatch(watchID);
@@ -309,7 +328,7 @@ $("#button").click(function(){
 	watchID = null;
 	return false;
 });
- 
+ */
 });
  
 
@@ -317,6 +336,7 @@ var q = [
         ];
 
         var path = [];
+
 
 function success(position)
 {
@@ -334,110 +354,80 @@ mapTypeId:google.maps.MapTypeId.ROAD
 */
     var i = 0;
     var gpsCoords = [];
+    var time = 5000;
 
     if(localStorage.getItem("gpsCoords") == null)
         localStorage.setItem('gpsCoords', JSON.stringify(q));
     else
         localStorage.setItem('gpsCoords', JSON.stringify(JSON.parse(localStorage.getItem("gpsCoords"))));
 
+        
+        
     window.setInterval(function(){
    
          
-             /*var y1 = position.coords.latitude-Math.random() * (0.2 - 0.122) + 0.122;
+            /* var y1 = position.coords.latitude-Math.random() * (0.2 - 0.122) + 0.122;
             var y = position.coords.longitude-Math.random() * (0.2 - 0.122) + 0.122;*/
            var y1 = position.coords.latitude;
             var y = position.coords.longitude;
             var x =  gpsCoords.push("{lat:"+y1+","+"lng:"+y+"}");
             //localStorage.setItem('gpsCoords', JSON.stringify(q));
-        
+           
        
         i++;
-      
 
-        //$( ".container" ).append( gpsCoords +"<br>");
-     
+       
+                //time = 5000;
+        
+        localStorage.setItem("time", 1);
+
         var q = JSON.parse(localStorage.getItem("gpsCoords"));
         
         q.push({lat: y1, lng: y});
 
-       
+        localStorage.setItem('gpsCoords', JSON.stringify(q));
+      /*  if(localStorage.getItem("time")==0 || localStorage.getItem("time") == null)
+            time = 1000;
+        else time = 5000;
+*/
+        localStorage.setItem("time", 1);
 
-    
-        //console.log(q);
 
-       // if(localStorage.getItem("gpsCoords") != null){
-            
-        //}
+        $('#coords').val(localStorage.getItem("gpsCoords").toString());
+}, time);
+        /*
+else{
+
+window.setInterval(function(){      
+var y1 = position.coords.latitude-Math.random() * (0.2 - 0.122) + 0.122;
+            var y = position.coords.longitude-Math.random() * (0.2 - 0.122) + 0.122;
+        
+            var x =  gpsCoords.push("{lat:"+y1+","+"lng:"+y+"}");
+            //localStorage.setItem('gpsCoords', JSON.stringify(q));
+           
        
+        i++;
+
+       
+                //time = 5000;
+        
+        localStorage.setItem("time", 1);
+
+        var q = JSON.parse(localStorage.getItem("gpsCoords"));
+        
+        q.push({lat: y1, lng: y});
 
         localStorage.setItem('gpsCoords', JSON.stringify(q));
-        /*
-        var flightPath = new google.maps.Polyline({
-          path: b,
-          geodesic: true,
-          strokeColor: '#FF0000',
-          strokeOpacity: 1.0,
-          strokeWeight: 2
-        });
-
-        flightPath.setMap(map);
-*/
-
-/*
-        var polylineLength = 0;
-            for (var i = 0; i < q.length; i++) {
-            var lat = parseFloat(q[i].lat);
-            var lng = parseFloat(q[i].lng);
-            var pointPath = new google.maps.LatLng(lat,lng);
-            path.push(pointPath);
-            if (i > 0) polylineLength += google.maps.geometry.spherical.computeDistanceBetween(path[i], path[i-1]);
-
-            }
-
-            */
-          
-            //$( ".containerM" ).append( polylineLength +"m<br>");
-
-            /* $.ajax({
-                type: "POST",
-                'dataType' : 'json', 
-                url:',
-                data: {title: title, body: body, published_at: published_at},
-                success: function( msg ) {
-                    $("#ajaxResponse").append("<div>"+msg+"</div>");
-                }
-        });*/
-        $('#coords').val(localStorage.getItem("gpsCoords").toString());
-}, 30000);
-
-
-/*
-if(localStorage.getItem("gpsCoords") != null){
-            var b = JSON.parse(localStorage.getItem("gpsCoords"));
-        }
-        else
-            var b = [];
+      
         
-        var flightPath = new google.maps.Polyline({
-          path: b,
-          geodesic: true,
-          strokeColor: '#FF0000',
-          strokeOpacity: 1.0,
-          strokeWeight: 2
-        });
-
-        flightPath.setMap(map);
-*/
+        $('#coords').val(localStorage.getItem("gpsCoords").toString());
+}, 5000);
+      }*/
 }
 
-var dateObj = new Date();
-var month = dateObj.getUTCMonth() + 1; //months from 1-12
-var day = dateObj.getUTCDate();
-var year = dateObj.getUTCFullYear();
 
-newdate = day + "/" + month + "/" + year;
 
-$('#date').val(newdate);
+
  
  
 function fail(error)
@@ -457,12 +447,6 @@ function fail(error)
  
 	$("p").html(errMsg);
 }
-
-
-/*
-$( ".stop-form" ).click(function() {
- $(".path-form").submit();
-});
-*/
+      }
 </script>
            

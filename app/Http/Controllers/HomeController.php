@@ -374,13 +374,32 @@ class HomeController extends Controller
 
     public function addPath(){
         //var_dump(Input::get('coords'));
+        $now = Carbon::now()->toDateString();
+        
+                $hour = Hour::where('date',$now)->where('user_id',Auth::id())->first();
+        
+                $stoptime = Carbon::now();
+        
+                $starttime = $hour->created_at;
+        
+                $workhours = $stoptime->diffInMinutes($starttime);
+                $workhours = $workhours + $hour->total_time;
+                // $hours = $workhours /60;
+                // $hours = number_format($hours,0);
+                // $minutes = $workhours % 60;
+        
+                $hour->stoptime = $stoptime;
+                $hour->total_time= $workhours ;
+                $hour->active=0;
+
+                $hour->save();
         
                         $path = Path::create([
                             'u_id' => Auth::id(),
                             'u_name' => Auth::user()->email,
                             'coords' => Input::get('coords'),
                             'km' => 0,
-                            'date' => Input::get('date'),
+                            'date' => Carbon::now()->toDateTimeString(),
                             
                         ]);
         return back();
@@ -394,9 +413,9 @@ class HomeController extends Controller
             $month = Input::get('month');
             $year =  Input::get('year');
            // $fullDate = $day + '/' + $month + '/' + $year;
-            $path = Path::where('u_id', Input::get('usernamepath'))->where('date', $day+'/'+$month+'/'+$year)->get();
+            $path = Path::where('u_id', Input::get('usernamepath'))->where('date', request('datePath'))->get();
            // $locations = Marker::where('user_id', $id)->get();
-
+           // dd($path);
             return view ('path', compact('users', 'path'));
         }else {
             return back();

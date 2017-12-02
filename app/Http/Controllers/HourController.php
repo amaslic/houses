@@ -55,7 +55,7 @@ class HourController extends Controller
                 $hour->active=0;
 
                 $hour->save();
-
+/*
                
                 $path = Path::create([
                     'u_id' => Auth::id(),
@@ -65,7 +65,7 @@ class HourController extends Controller
                     'date' => Input::get('date'),
                     
                 ]);
-
+*/
                 return back();
             }
 }

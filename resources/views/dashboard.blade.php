@@ -242,22 +242,19 @@
                 </div>
                     
                 <div class="card-block text-xs-center">
-
                 
-                    {{--  <h3>{{$perusername}}</h3>  --}}
-                    Please select date.
-                    <div class="form-inline">
-                        <div class="form-group">
-                            <!--<input type="date" class="form-control" name="date" id="date"> -->
-                            <input type="text" name="day" style="max-width: 25px" />
-                            <input type="text" name="month" style="max-width: 25px; margin-left: 2px;" />
-                            <input type="text" name="year" style="max-width: 40px; margin-left: 2px;" />
-                        </div>
-                        <div class="form-group" style="margin-left:30px;display:block;" >                        
-                            <button type="submit" class="btn btn-warning">Report</button>
-                        </div>
-                    </div>         
-                </div>
+                                
+                                    {{--  <h3>{{$perusername}}</h3>  --}}
+                                    Please select date.
+                                    <div class="form-inline">
+                                        <div class="form-group">
+                                            <input type="date" class="form-control" name="datePath" id="datePath">
+                                        </div>
+                                        <div class="form-group" style="margin-left:30px;display:block;" >                        
+                                            <button type="submit" class="btn btn-warning">Report</button>
+                                        </div>
+                                    </div>         
+                                </div>
                     </form><!-- End form --> 
 
                 </div>
