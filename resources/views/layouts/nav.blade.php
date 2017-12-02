@@ -220,14 +220,14 @@
 
                                     </a>
                                     @endif
-                                    <li>
-                                    <form action="addpath" method="post" class="path-form" style="display:none">
+                                  
+                                    <form action="../addpath" method="post" class="path-form" style="display:none">
                                     {{ csrf_field() }}
                                     <input name="date" id="date" type="hidden" />
 <input name="coords" id="coords" type="hidden" />
                                         <button>Add path</button>
                                     </form>
-                    </li>
+                    
                                 <ul class="dropdown-menu animated flipInX">
 
                                     <li>  <ul class="dropdown-menu-list scroller" style="overflow-y: scroll;
