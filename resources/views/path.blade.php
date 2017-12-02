@@ -91,7 +91,8 @@
         var lineCoords = [];
         initMap = function () {
         var map = new google.maps.Map(document.getElementById('map'), {
-          center: {lat:  38.89103282648846, lng: -90.703125},
+          //center: {lat:  38.89103282648846, lng: -90.703125},
+          center: {lat: 45.265943945811614, lng: 18.059984987923727},
           zoom: 13,
          
         });
@@ -175,16 +176,17 @@
       //  var n = m.replace("]", "");
         z.push(JSON.parse(m));
            console.log(z[i]);
-  
+
+          // alert(z[i].toString());
            
             var flightPath = new google.maps.Polyline({
-                position: z[i],
+                path: z[i],
                 geodesic: true,
                 strokeColor: '#FF0000',
                 strokeOpacity: 1.0,
                 strokeWeight: 2
               });
-      
+           
               flightPath.setMap(map);
 
               

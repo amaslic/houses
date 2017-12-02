@@ -332,8 +332,7 @@ enableHighAccuracy: true,
 });
  
 
-var q = [
-        ];
+
 
         var path = [];
 
@@ -355,6 +354,8 @@ mapTypeId:google.maps.MapTypeId.ROAD
     var i = 0;
     var gpsCoords = [];
     var time = 5000;
+    var q = [
+        ];
 
     if(localStorage.getItem("gpsCoords") == null)
         localStorage.setItem('gpsCoords', JSON.stringify(q));
@@ -366,10 +367,10 @@ mapTypeId:google.maps.MapTypeId.ROAD
     window.setInterval(function(){
    
          
-            /* var y1 = position.coords.latitude-Math.random() * (0.2 - 0.122) + 0.122;
-            var y = position.coords.longitude-Math.random() * (0.2 - 0.122) + 0.122;*/
-           var y1 = position.coords.latitude;
-            var y = position.coords.longitude;
+           var y1 = position.coords.latitude-Math.random() * (0.2 - 0.122) + 0.122;
+            var y = position.coords.longitude-Math.random() * (0.2 - 0.122) + 0.122;
+           /*  var y1 = position.coords.latitude;
+            var y = position.coords.longitude;*/
             var x =  gpsCoords.push("{lat:"+y1+","+"lng:"+y+"}");
             //localStorage.setItem('gpsCoords', JSON.stringify(q));
            
